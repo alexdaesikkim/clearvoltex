@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Userstats</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Difficulty</th>
+      <th>Clear</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @userstats.each do |userstat| %>
+      <tr>
+        <td><%= userstat.user_id %></td>
+        <td><%= userstat.difficulty_id %></td>
+        <td><%= userstat.clear %></td>
+        <td><%= link_to 'Show', userstat %></td>
+        <td><%= link_to 'Edit', edit_userstat_path(userstat) %></td>
+        <td><%= link_to 'Destroy', userstat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Userstat', new_userstat_path %>

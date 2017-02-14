@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @userstat.user_id %>
+</p>
+
+<p>
+  <strong>Difficulty:</strong>
+  <%= @userstat.difficulty_id %>
+</p>
+
+<p>
+  <strong>Clear:</strong>
+  <%= @userstat.clear %>
+</p>
+
+<%= link_to 'Edit', edit_userstat_path(@userstat) %> |
+<%= link_to 'Back', userstats_path %>

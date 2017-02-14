@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Difficulties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Song</th>
+      <th>Difficulty name</th>
+      <th>Level</th>
+      <th>Photo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @difficulties.each do |difficulty| %>
+      <tr>
+        <td><%= difficulty.song_id %></td>
+        <td><%= difficulty.difficulty_name %></td>
+        <td><%= difficulty.level %></td>
+        <td><%= difficulty.photo %></td>
+        <td><%= link_to 'Show', difficulty %></td>
+        <td><%= link_to 'Edit', edit_difficulty_path(difficulty) %></td>
+        <td><%= link_to 'Destroy', difficulty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Difficulty', new_difficulty_path %>
