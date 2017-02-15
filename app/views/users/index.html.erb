@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Password digest</th>
       <th>Display name</th>
       <th>Email</th>
       <th>Role</th>
@@ -18,7 +17,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= user.password_digest %></td>
         <td><%= user.display_name %></td>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
