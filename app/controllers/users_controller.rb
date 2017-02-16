@@ -26,9 +26,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.role = "Regular"
+    @difficulties = Difficulty.all
 
     respond_to do |format|
       if @user.save
+        @difficulties.each do |difficulty|
+          @userstat = Userstat.new
+          @userstat.user_id = @user.id
+          @userstat.difficulty_id = difficulty.id
+          @userstat.clear = "not_played"
+          @userstat.save!
+        end
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

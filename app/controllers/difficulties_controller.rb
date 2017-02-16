@@ -25,9 +25,17 @@ class DifficultiesController < ApplicationController
   # POST /difficulties.json
   def create
     @difficulty = Difficulty.new(difficulty_params)
+    @users = User.all
 
     respond_to do |format|
       if @difficulty.save
+        @users.each do |user|
+          @userstat = Userstat.new
+          @userstat.user_id = user.id
+          @userstat.difficulty_id = @difficulty.id
+          @userstat.clear = "not_played"
+          @userstat.save!
+        end
         format.html { redirect_to @difficulty, notice: 'Difficulty was successfully created.' }
         format.json { render :show, status: :created, location: @difficulty }
       else

@@ -25,6 +25,7 @@ class UserstatsController < ApplicationController
   # POST /userstats.json
   def create
     @userstat = Userstat.new(userstat_params)
+    @userstat.clear = "not_played"
 
     respond_to do |format|
       if @userstat.save
