@@ -16,7 +16,7 @@
   <tbody>
     <% @difficulties.each do |difficulty| %>
       <tr>
-        <td><%= difficulty.song_id %></td>
+        <td><%= difficulty.song.song_name %></td>
         <td><%= difficulty.difficulty_name %></td>
         <td><%= difficulty.level %></td>
         <td><%= difficulty.photo %></td>

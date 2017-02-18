@@ -52,6 +52,26 @@ class UserstatsController < ApplicationController
     end
   end
 
+  def update_clearstate
+    clears = ["failed", "cleared", "excessive", "UC", "PUC"]
+    clearstate = @userstat.clear
+    x = 0
+    case clearstate
+    when "failed"
+      x = 1
+    when "cleared"
+      x = 2
+    when "excessive"
+      x = 3
+    when "UC"
+      x = 4
+    else
+      x = 0 
+    end
+    @userstat.clear = clears[x]
+    @userstat.save
+  end
+
   # DELETE /userstats/1
   # DELETE /userstats/1.json
   def destroy
