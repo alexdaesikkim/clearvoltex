@@ -3,13 +3,14 @@
 <h1>Userstats</h1>
 
 <div class="container">
+  <h2>Level 19</h2>
   <% @userstats.each do |userstat| %>
     <span class="parent">
-      <img class=<%= userstat.clear %> src= <%= "assets/#{userstat.difficulty.photo}" %> />
+      <img class=<%= userstat.clear %> src= <%= "assets/song/#{userstat.difficulty.photo}" %> />
     </span>
   <% end %>
 </div>
 
 <br>
 
-<%= link_to 'New Userstat', new_userstat_path %>
+<!--<%= link_to 'New Userstat', new_userstat_path %>-->

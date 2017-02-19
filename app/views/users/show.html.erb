@@ -1,24 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<div class="container">
+  <h2>Level 19</h2>
+  <% @userstats.each do |userstat| %>
+    <span class="parent">
+      <img class=<%= userstat.clear %>
+           src= <%= asset_url "song/#{userstat.difficulty.photo}" %>
+           onclick="update_clear(this, <%= userstat.id %>)"
+      />
+    </span>
+  <% end %>
+</div>
 
-<p>
-  <strong>Display name:</strong>
-  <%= @user.display_name %>
-</p>
+<%= link_to 'Edit Credentials', edit_user_path(@user) %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<%= javascript_tag do %>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  function update_clear(difficulty, current_id){
+    $.post(
+      '/userstats/update.json',
+      { id: current_id },
+      function(data){
+        difficulty.className = data.clear
+      }
+    )
+  }
+<% end %>

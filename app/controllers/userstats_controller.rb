@@ -52,24 +52,31 @@ class UserstatsController < ApplicationController
     end
   end
 
-  def update_clearstate
-    clears = ["failed", "cleared", "excessive", "UC", "PUC"]
+  def update_clearstats
+    current_id = params["id"]
+    @userstat = Userstat.find(current_id)
+    clears = ["not_played", "failed", "cleared", "excessive", "UC", "PUC"]
     clearstate = @userstat.clear
     x = 0
     case clearstate
-    when "failed"
+    when "not_played"
       x = 1
-    when "cleared"
+    when "failed"
       x = 2
-    when "excessive"
+    when "cleared"
       x = 3
-    when "UC"
+    when "excessive"
       x = 4
+    when "UC"
+      x = 5
     else
       x = 0 
     end
     @userstat.clear = clears[x]
     @userstat.save
+    respond_to do |format|
+      format.json {render :json => {:clear => @userstat.clear}}
+    end
   end
 
   # DELETE /userstats/1
