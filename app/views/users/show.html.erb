@@ -1,13 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <h2>Level 19</h2>
+  <h3>Clearly Not Level 19</h3>
   <% @userstats.each do |userstat| %>
     <span class="parent">
-      <img class=<%= userstat.clear %>
-           src= <%= asset_url "song/#{userstat.difficulty.photo}" %>
-           onclick="update_clear(this, <%= userstat.id %>)"
-      />
+      <img class=<%= userstat.clear %> src= <%= asset_url "song/#{userstat.difficulty.photo}" %> onclick="update_clear(this, <%= userstat.id %>)" />
+      <img class="difficulty_tag" src = <%= asset_url "difficulty/#{userstat.difficulty.difficulty_name}.png" %> />
     </span>
   <% end %>
 </div>

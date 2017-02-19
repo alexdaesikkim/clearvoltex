@@ -1,3 +1,77 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.not_played {
+	display: inline-block;
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid;
+	filter: grayscale(100%);
+}
+
+.failed {
+	display: inline-block;
+	height: 175px;
+	width: auto;
+ 	position: relative;
+    top: 0;
+	left: 0;
+	border:9px solid #808080;
+	filter: grayscale(50%);
+}
+
+.cleared {
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #00cc00;
+}
+
+.excessive {
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #990099;
+}
+
+.UC {
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #ff3399;
+}
+
+.PUC {
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #ffff00;
+}
+
+.parent {
+	display: inline-block;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.difficulty_tag{
+	-webkit-filter: drop-shadow(2px 2px 2px #222);
+    filter: drop-shadow(2px 2px 2px #222);
+	width: 45px;
+	height: auto;
+	position: absolute;
+	top: 140px;
+	left: 115px;
+} 
