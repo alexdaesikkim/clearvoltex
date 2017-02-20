@@ -1,0 +1,23 @@
+<%= form_for(:session, url: login_path) do |f| %>
+
+  <div class="container">
+  	<div class="row">
+  	  <div class = "col s4 offset-s4">
+  	  	<center><h2>Log In</h2></center>
+	    <div class="input-field">
+	      <%= f.label :username %>
+	      <%= f.text_field :username %>
+	    </div>
+
+	    <div class="input-field">
+	      <%= f.label :password %>
+	      <%= f.password_field :password %>
+	    </div>
+
+	    <div class="actions">
+	      <%= f.submit "Login", class: "btn waves-effect waves-light" %>
+	    </div>
+	  </div>
+	</div>
+  </div>
+<% end %>
