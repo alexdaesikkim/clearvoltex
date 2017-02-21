@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @userstats = @user.userstats
+    @userstats = @user.userstats.sort_by(&:sort_string)
   end
 
   # GET /users/new
@@ -28,17 +28,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.role = "Regular"
-    @difficulties = Difficulty.all
+    @difficulties = Difficulty.all.joins(:song).order("song_name ASC")
 
     respond_to do |format|
       if @user.save
-        @difficulties.each do |difficulty|
+        @difficulties.each do |d|
           @userstat = Userstat.new
           @userstat.user_id = @user.id
-          @userstat.difficulty_id = difficulty.id
+          @userstat.difficulty_id = d.id
           @userstat.clear = "not_played"
+          name_string = (20-d.level).to_s + "_" + d.tier + "_" + d.difficulty_name + "_" + d.song.song_name + "_" + d.song_id.to_s
+          @userstat.sort_string = name_string
           @userstat.save!
         end
+        log_in @user
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

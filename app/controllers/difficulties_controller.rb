@@ -34,6 +34,7 @@ class DifficultiesController < ApplicationController
           @userstat.user_id = user.id
           @userstat.difficulty_id = @difficulty.id
           @userstat.clear = "not_played"
+          @userstat.sort_string = (20-@difficulty.level).to_s + "_" + @difficulty.tier + "_" + @difficulty.difficulty_name + "_" + @difficulty.song.song_name + "_" + @difficulty.song.id.to_s
           @userstat.save!
         end
         format.html { redirect_to @difficulty, notice: 'Difficulty was successfully created.' }

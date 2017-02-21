@@ -29,6 +29,12 @@
                 Materialize.toast('<%= message %>', 5000, 'green');
               });
             </script>
+          <% elsif type == "notice" %>
+            <script>
+              $(function() {
+                Materialize.toast('<%= message %>', 15000, 'blue');
+              });
+            </script>
           <% else %>
             <script>
               $(function() {
