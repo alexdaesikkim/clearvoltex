@@ -1,24 +1,17 @@
-# README
+## ClearVoltex
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Created by Alex Kim
 
-Things you may want to cover:
+http://sdvx-level.github.io/ haven't been updated since release of SDVX 2, so I decided to make my own version of the app using Ruby on Rails. For now, this is documentation for personal work only, and will update to show relevant changes within the application. May go open source once things really start picking up.
 
-* Ruby version
+#Current Version: 0.0.1
 
-* System dependencies
+#Version history:
 
-* Configuration
+0.0.1 (Current Version)
 
-* Database creation
+* Simpe method on Jackets working
 
-* Database initialization
+* Dummy data for seeds to test front-end work
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* User sessions working
