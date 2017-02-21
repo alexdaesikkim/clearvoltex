@@ -1,20 +1,60 @@
 <p id="notice"><%= notice %></p>
 
+
 <div class="container">
-  <h3>Clearly Not Level 19</h3>
-  <% @userstats.each do |userstat| %>
-    <span class="parent">
-      <img class=<%= userstat.clear %> src= <%= asset_url "song/#{userstat.difficulty.photo}" %> onclick="update_clear(this, <%= userstat.id %>)" />
-      <img class="difficulty_tag" src = <%= asset_url "difficulty/#{userstat.difficulty.difficulty_name}.png" %> />
-    </span>
-  <% end %>
+  <div class="col s12">
+    <ul class="tabs tabs-fixed-width" id="level">
+      <li class="tab"><a href="#level-1">1 - 2</a></li>
+      <li class="tab"><a href="#level-2">3 - 4</a></li>
+      <li class="tab"><a href="#level-3">5 - 6</a></li>
+      <li class="tab"><a href="#level-4">7 - 8</a></li>
+      <li class="tab"><a href="#level-5">9 - 10</a></li>
+      <li class="tab"><a href="#level-6">11 - 12</a></li>
+      <li class="tab"><a href="#level-7">13 - 14</a></li>
+      <li class="tab"><a href="#level-8">15 - 16</a></li>
+      <li class="tab"><a class="active" href="#level-9">17 - 18</a></li>
+      <li class="tab"><a href="#level-10">19 - 20</a></li>
+    </ul>
+  </div>
+  <div id="level-1" class="col s12">a
+  </div>
+  <div id="level-2" class="col s12">df
+  </div>
+  <div id="level-3" class="col s12">s
+  </div>
+  <div id="level-4" class="col s12">d
+  </div>
+  <div id="level-5" class="col s12">f
+  </div>
+  <div id="level-6" class="col s12">ae
+  </div>
+  <div id="level-7" class="col s12">aef
+  </div>
+  <div id="level-8" class="col s12">afsd
+  </div>
+  <div id="level-9" class="col s12">
+    <%= render 'userstatview', userstats: @userstats %>
+  </div>
+  <div id="level-10" class="col s12">
+    <h3>Clearly Not Level 19-20</h3>
+    <% @userstats.each do |userstat| %>
+      <span class="parent">
+        <img class=<%= userstat.clear %> src= <%= asset_url "song/#{userstat.difficulty.photo}" %> onclick="update_clear(this, <%= userstat.id %>)" />
+        <img class="difficulty_tag" src = <%= asset_url "difficulty/#{userstat.difficulty.difficulty_name}.png" %> />
+      </span>
+    <% end %>
+  </div>
 </div>
 
-<%= link_to 'Edit Credentials', edit_user_path(@user) %>
+<center><%= link_to 'Edit Credentials', edit_user_path(@user) %></center>
 
 <%= javascript_tag do %>
 
   function update_clear(difficulty, current_id){
+    $(document).ready(function(){
+      $('ul.tabs').tabs('select_tab', 'tab_id');
+    });
+    
     $.post(
       '/userstats/update.json',
       { id: current_id },
