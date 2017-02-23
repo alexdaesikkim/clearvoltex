@@ -13,10 +13,50 @@ class UsersController < ApplicationController
     @userstats = @user.userstats
     #@level_15 = @userstats.joins(:difficulty).where("level = 15")
     #@level_16 = @userstats.joins(:difficulty).where("level = 16")
-    @level_17 = Difficulty.where("level = 17").order("song_name ASC")
-    @level_18 = Difficulty.where("level = 18").order("song_name ASC")
-    @level_19 = Difficulty.where("level = 19").order("song_name ASC")
-    @level_20 = Difficulty.where("level = 20").order("song_name ASC")
+    @level_17 = [
+      Difficulty.where("level = 17 AND tier = ?", "S").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "A").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "B").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "C").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "D").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "E").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "F").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "P").order("song_name ASC"),
+      Difficulty.where("level = 17 AND tier = ?", "N").order("song_name ASC")
+    ]
+    @level_18 = [
+      Difficulty.where("level = 18 AND tier = ?", "S").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "A").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "B").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "C").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "D").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "E").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "F").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "P").order("song_name ASC"),
+      Difficulty.where("level = 18 AND tier = ?", "N").order("song_name ASC")
+    ]
+    @level_19 = [
+      Difficulty.where("level = 19 AND tier = ?", "S").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "A").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "B").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "C").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "D").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "E").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "F").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "P").order("song_name ASC"),
+      Difficulty.where("level = 19 AND tier = ?", "N").order("song_name ASC")
+    ]
+    @level_20 = [
+      Difficulty.where("level = 20 AND tier = ?", "S").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "A").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "B").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "C").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "D").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "E").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "F").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "P").order("song_name ASC"),
+      Difficulty.where("level = 20 AND tier = ?", "N").order("song_name ASC")
+    ]
   end
 
   # GET /users/new

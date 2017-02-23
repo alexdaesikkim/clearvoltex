@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170223043107) do
-=======
 ActiveRecord::Schema.define(version: 20170221065219) do
->>>>>>> c4016af1e77e79065322c40b5977bed21cab2178
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,20 +23,8 @@ ActiveRecord::Schema.define(version: 20170221065219) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "tier"
-<<<<<<< HEAD
     t.string   "effector"
     t.string   "song_name"
-=======
-    t.string   "effect"
-  end
-
-  create_table "songs", force: :cascade do |t|
-    t.string   "song_name"
-    t.string   "artist"
-    t.string   "bpm"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
->>>>>>> c4016af1e77e79065322c40b5977bed21cab2178
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,10 +44,7 @@ ActiveRecord::Schema.define(version: 20170221065219) do
     t.string   "clear"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-<<<<<<< HEAD
     t.string   "score"
-=======
->>>>>>> c4016af1e77e79065322c40b5977bed21cab2178
     t.string   "sort_string"
   end
 

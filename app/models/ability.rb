@@ -20,10 +20,7 @@ class Ability
             user_userstats.include? = userstat.id
         end
     else
-    
-    #elsif user.role? :guardian
-    #    can :manage, Child do |child|
-    #        child.guardian.id == user.guardian_id
-    #    end
+        can :create, User
+    end
   end
 end

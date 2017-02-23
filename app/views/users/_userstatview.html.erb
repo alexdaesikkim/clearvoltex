@@ -1,9 +1,25 @@
-<h3>Level <%= level %></h3>
-<% difficulties.each do |difficulty| %>
-  <span class="parent">
-    <img class=<%= difficulty.user_clear(@user.id) %> src= <%= asset_url "song#{difficulty.photo}" %> onclick="update_clear(this, <%= difficulty.id %>)" />
-    <img class="difficulty_tag" src = <%= asset_url "difficulty/#{difficulty.difficulty_name}.png" %> />
-  </span>
+<center><h2>Level <%= level %></h2></center>
+<% tiers.each do |tier| %>
+	<% if tier.exists? %>
+		<h4>
+		<% if tier.first.tier == "N" %>
+			Not Rated
+		<% elsif tier.first.tier == "P" %>
+			Personal
+		<% else %>
+			<%= tier.first.tier %>
+		<% end %>	
+		</h4>
+		<div class="divider"></div>
+		<div class="section">
+			<% tier.each do |difficulty| %>
+				<span class="parent">
+					<img class=<%= difficulty.user_clear(@user.id) %> src= <%= asset_url "song/#{difficulty.song_id}/#{difficulty.difficulty_name}.jpg" %> onclick="update_clear(this, <%= difficulty.id %>)" />
+					<img class="difficulty_tag" src = <%= asset_url "difficulty/#{difficulty.difficulty_name}.png" %> />
+				</span>
+			<% end %>
+		</div>
+	<% end %>
 <% end %>
 
 <!-- figure out how I can create page without having all userstats -->
