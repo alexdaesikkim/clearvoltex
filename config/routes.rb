@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
-  resources :songs
-  resources :difficulties
-  resources :userstats
   resources :users
 
   post		'/userstats/update' => 'userstats#update_clearstats'

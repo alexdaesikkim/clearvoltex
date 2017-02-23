@@ -29,6 +29,7 @@ class UserstatsController < ApplicationController
 
     respond_to do |format|
       if @userstat.save
+        flash[:success] = "Welcome to ClearVoltex!"
         format.html { redirect_to @userstat, notice: 'Userstat was successfully created.' }
         format.json { render :show, status: :created, location: @userstat }
       else
@@ -43,7 +44,8 @@ class UserstatsController < ApplicationController
   def update
     respond_to do |format|
       if @userstat.update(userstat_params)
-        format.html { redirect_to @userstat, notice: 'Userstat was successfully updated.' }
+        flash[:success] = "Changes successfully saved"
+        format.html { redirect_to @userstat }
         format.json { render :show, status: :ok, location: @userstat }
       else
         format.html { render :edit }
