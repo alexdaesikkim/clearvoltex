@@ -16,33 +16,29 @@
       <li class="tab"><a href="#level-10">19 - 20</a></li>
     </ul>
   </div>
-  <div id="level-1" class="col s12">a
+  <div id="level-1" class="col s12">
   </div>
-  <div id="level-2" class="col s12">df
+  <div id="level-2" class="col s12">
   </div>
-  <div id="level-3" class="col s12">s
+  <div id="level-3" class="col s12">
   </div>
-  <div id="level-4" class="col s12">d
+  <div id="level-4" class="col s12">
   </div>
-  <div id="level-5" class="col s12">f
+  <div id="level-5" class="col s12">
   </div>
-  <div id="level-6" class="col s12">ae
+  <div id="level-6" class="col s12">
   </div>
-  <div id="level-7" class="col s12">aef
+  <div id="level-7" class="col s12">
   </div>
-  <div id="level-8" class="col s12">afsd
+  <div id="level-8" class="col s12">
   </div>
   <div id="level-9" class="col s12">
-    <%= render 'userstatview', userstats: @userstats %>
+    <%= render 'userstatview', userstats: @level_17 %>
+    <%= render 'userstatview', userstats: @level_18 %>
   </div>
-  <div id="level-10" class="col s12">
-    <h3>Clearly Not Level 19-20</h3>
-    <% @userstats.each do |userstat| %>
-      <span class="parent">
-        <img class=<%= userstat.clear %> src= <%= asset_url "song/#{userstat.difficulty.photo}" %> onclick="update_clear(this, <%= userstat.id %>)" />
-        <img class="difficulty_tag" src = <%= asset_url "difficulty/#{userstat.difficulty.difficulty_name}.png" %> />
-      </span>
-    <% end %>
+  <div id="level-10" class="col s12"> 
+    <%= render 'userstatview', userstats: @level_19 %>
+    <%= render 'userstatview', userstats: @level_20 %>
   </div>
 </div>
 
