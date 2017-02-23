@@ -53,9 +53,9 @@ class UserstatsController < ApplicationController
   end
 
   def update_clearstats
-    current_id = params["id"]
-    if(Userstat.exists?(current_id))
-      @userstat = Userstat.find(current_id)
+    @userstat = Userstat.where(:user_id=>params["user_id"]).where(:difficulty_id=>params["diff_id"]).first
+    if(!@userstat.nil?)
+      puts "case1"
       clears = ["not_played", "failed", "cleared", "excessive", "UC", "PUC"]
       clearstate = @userstat.clear
       x = 0
@@ -76,8 +76,9 @@ class UserstatsController < ApplicationController
       @userstat.clear = clears[x]
       @userstat.save
     else
+      puts "case2"
       @userstat = Userstat.new
-      @userstat.difficulty_id = params["difficulty_id"]
+      @userstat.difficulty_id = params["diff_id"]
       @userstat.user_id = params["user_id"]
       @userstat.clear = "failed"
       @userstat.save

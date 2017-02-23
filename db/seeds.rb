@@ -34,5 +34,6 @@ diffs.each do |row|
 	d.tier = row['tier']
 	d.photo = row['photo']
 	d.save
+	puts "Song #{d.song_name} - #{d.difficulty_name.upcase} #{d.level} has been saved"
 end
-puts "There are #{Difficulty.count} difficulties that have been saved"
+puts "\nThere are #{Difficulty.count} difficulties"

@@ -13,10 +13,10 @@ class UsersController < ApplicationController
     @userstats = @user.userstats
     #@level_15 = @userstats.joins(:difficulty).where("level = 15")
     #@level_16 = @userstats.joins(:difficulty).where("level = 16")
-    @level_17 = @userstats.joins(:difficulty).where("level = 17").order("song_name ASC")
-    @level_18 = @userstats.joins(:difficulty).where("level = 18").order("song_name ASC")
-    @level_19 = @userstats.joins(:difficulty).where("level = 19").order("song_name ASC")
-    @level_20 = @userstats.joins(:difficulty).where("level = 20").order("song_name ASC")
+    @level_17 = Difficulty.where("level = 17").order("song_name ASC")
+    @level_18 = Difficulty.where("level = 18").order("song_name ASC")
+    @level_19 = Difficulty.where("level = 19").order("song_name ASC")
+    @level_20 = Difficulty.where("level = 20").order("song_name ASC")
   end
 
   # GET /users/new
@@ -33,17 +33,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.role = "Regular"
-    @difficulties = Difficulty.all
 
     respond_to do |format|
       if @user.save
-        @difficulties.each do |difficulty|
-          @userstat = Userstat.new
-          @userstat.user_id = @user.id
-          @userstat.difficulty_id = difficulty.id
-          @userstat.clear = "not_played"
-          @userstat.save!
-        end
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else

@@ -14,29 +14,28 @@
   <div id="level-7" class="col s12">
   </div>-->
   <div id="level-8" class="col s12">
-    <%= render 'userstatview', userstats: @level_17, level: 17 %>
+    <%= render 'userstatview', difficulties: @level_17, level: 17 %>
   </div>
   <div id="level-9" class="col s12">
-    <%= render 'userstatview', userstats: @level_18, level: 18 %>
+    <%= render 'userstatview', difficulties: @level_18, level: 18 %>
   </div>
   <div id="level-10" class="col s12"> 
-    <%= render 'userstatview', userstats: @level_19, level: 19 %>
-    <%= render 'userstatview', userstats: @level_20, level: 20 %>
+    <%= render 'userstatview', difficulties: @level_19, level: 19 %>
+    <%= render 'userstatview', difficulties: @level_20, level: 20 %>
   </div>
 </div>
 
 <center><%= link_to 'Edit Credentials', edit_user_path(@user) %></center>
 
 <%= javascript_tag do %>
+  $(document).ready(function(){
+    $('ul.tabs').tabs('select_tab', 'tab_id');
+  });
 
   function update_clear(difficulty, current_id){
-    $(document).ready(function(){
-      $('ul.tabs').tabs('select_tab', 'tab_id');
-    });
-    
     $.post(
       '/userstats/update.json',
-      { id: current_id },
+      { user_id: <%= @user.id %>, diff_id: current_id },
       function(data){
         difficulty.className = data.clear
       }
