@@ -11,12 +11,12 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @userstats = @user.userstats
-    @level_15 = @userstats.joins(:difficulty).where("level = 15")
-    @level_16 = @userstats.joins(:difficulty).where("level = 16")
-    @level_17 = @userstats.joins(:difficulty).where("level = 17")
-    @level_18 = @userstats.joins(:difficulty).where("level = 18")
-    @level_19 = @userstats.joins(:difficulty).where("level = 19")
-    @level_20 = @userstats.joins(:difficulty).where("level = 20")
+    #@level_15 = @userstats.joins(:difficulty).where("level = 15")
+    #@level_16 = @userstats.joins(:difficulty).where("level = 16")
+    @level_17 = @userstats.joins(:difficulty).where("level = 17").order("song_name ASC")
+    @level_18 = @userstats.joins(:difficulty).where("level = 18").order("song_name ASC")
+    @level_19 = @userstats.joins(:difficulty).where("level = 19").order("song_name ASC")
+    @level_20 = @userstats.joins(:difficulty).where("level = 20").order("song_name ASC")
   end
 
   # GET /users/new

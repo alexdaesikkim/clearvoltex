@@ -1,7 +1,9 @@
-<h3>Clearly Not Level 17-18</h3>
+<h3>Level <%= level %></h3>
 <% userstats.each do |userstat| %>
   <span class="parent">
     <img class=<%= userstat.clear %> src= <%= asset_url "song#{userstat.difficulty.photo}" %> onclick="update_clear(this, <%= userstat.id %>)" />
     <img class="difficulty_tag" src = <%= asset_url "difficulty/#{userstat.difficulty.difficulty_name}.png" %> />
   </span>
 <% end %>
+
+<!-- figure out how I can create page without having all userstats -->

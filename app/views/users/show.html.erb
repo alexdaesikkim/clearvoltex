@@ -1,44 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-
+<br>
 <div class="container">
   <div class="col s12">
     <ul class="tabs tabs-fixed-width" id="level">
-      <li class="tab"><a href="#level-1">1 - 2</a></li>
-      <li class="tab"><a href="#level-2">3 - 4</a></li>
-      <li class="tab"><a href="#level-3">5 - 6</a></li>
-      <li class="tab"><a href="#level-4">7 - 8</a></li>
-      <li class="tab"><a href="#level-5">9 - 10</a></li>
-      <li class="tab"><a href="#level-6">11 - 12</a></li>
-      <li class="tab"><a href="#level-7">13 - 14</a></li>
-      <li class="tab"><a href="#level-8">15 - 16</a></li>
-      <li class="tab"><a class="active" href="#level-9">17 - 18</a></li>
-      <li class="tab"><a href="#level-10">19 - 20</a></li>
+      <!--<li class="tab"><a href="#level-6">11 - 12</a></li>
+      <li class="tab"><a href="#level-7">13 - 14</a></li>-->
+      <li class="tab"><a href="#level-8">Level 17</a></li>
+      <li class="tab"><a class="active" href="#level-9">Level 18</a></li>
+      <li class="tab"><a href="#level-10">Level 19 - 20</a></li>
     </ul>
   </div>
-  <div id="level-1" class="col s12">
-  </div>
-  <div id="level-2" class="col s12">
-  </div>
-  <div id="level-3" class="col s12">
-  </div>
-  <div id="level-4" class="col s12">
-  </div>
-  <div id="level-5" class="col s12">
-  </div>
-  <div id="level-6" class="col s12">
+  <!--<div id="level-6" class="col s12">
   </div>
   <div id="level-7" class="col s12">
-  </div>
+  </div>-->
   <div id="level-8" class="col s12">
+    <%= render 'userstatview', userstats: @level_17, level: 17 %>
   </div>
   <div id="level-9" class="col s12">
-    <%= render 'userstatview', userstats: @level_17 %>
-    <%= render 'userstatview', userstats: @level_18 %>
+    <%= render 'userstatview', userstats: @level_18, level: 18 %>
   </div>
   <div id="level-10" class="col s12"> 
-    <%= render 'userstatview', userstats: @level_19 %>
-    <%= render 'userstatview', userstats: @level_20 %>
+    <%= render 'userstatview', userstats: @level_19, level: 19 %>
+    <%= render 'userstatview', userstats: @level_20, level: 20 %>
   </div>
 </div>
 

@@ -24,14 +24,7 @@ ActiveRecord::Schema.define(version: 20170223043107) do
     t.datetime "updated_at",      null: false
     t.string   "tier"
     t.string   "effector"
-  end
-
-  create_table "songs", force: :cascade do |t|
     t.string   "song_name"
-    t.string   "artist"
-    t.string   "bpm"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
