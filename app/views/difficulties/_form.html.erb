@@ -1,14 +1,12 @@
 <%= form_for(difficulty) do |f| %>
   <% if difficulty.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(difficulty.errors.count, "error") %> prohibited this difficulty from being saved:</h2>
-
-      <ul>
-      <% difficulty.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+    <% difficulty.errors.full_messages.each do |message| %>
+      <script>
+        $(function() {
+            Materialize.toast('<%= message %>', 15000, 'red');
+        });
+      </script>
+    <% end %>
   <% end %>
 
   <div class="input-field">

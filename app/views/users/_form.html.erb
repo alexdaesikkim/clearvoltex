@@ -1,9 +1,13 @@
-<%= form_for(user) do |f| %>
+<%= simple_form_for(user) do |f| %>
   <% if user.errors.any? %>
     <% user.errors.full_messages.each do |message| %>
       <script>
         $(function() {
+<<<<<<< HEAD
           Materialize.toast('<%= message %>', 15000, 'red');
+=======
+            Materialize.toast('<%= message %>', 15000, 'red');
+>>>>>>> c4016af1e77e79065322c40b5977bed21cab2178
         });
       </script>
     <% end %>
@@ -11,32 +15,15 @@
 
   <div class="container">
     <div class="input-field">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </div>
-
-    <div class="input-field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="input-field">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-
-    <div class="input-field">
-      <%= f.label :display_name %>
-      <%= f.text_field :display_name %>
-    </div>
-
-    <div class="input-field">
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.input :username, label_html: { class: 'active' }, placeholder: 'Enter username, all lowercase'%>
+      <%= f.input :password, label_html: { class: 'active' }, placeholder: 'Mininum length: 8 characters'%>
+      <%= f.input :password_confirmation, label_html: { class: 'active' }, placeholder: 'Input same password', required: true %>
+      <%= f.input :display_name, label_html: { class: 'active' }, placeholder: 'Your SDVX name' %>
+      <%= f.input :email, as: :string, label_html: { class: 'active' }, placeholder: 'Your e-mail' %>
     </div>
 
     <div class="actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, class: "btn waves-effect waves-light"%>
     </div>
   </div>
 <% end %>
