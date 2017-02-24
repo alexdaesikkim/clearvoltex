@@ -5,19 +5,21 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new
-    if user.role? :Admin
+    if user.role? :admin
         can :manage, :all
-    elsif user.role? :Regular
+    elsif user.role? :regular
         #program
-        can :update, User do |current_user|
+        can :manage, User do |current_user|
+            puts current_user.id
+            puts user.id
             current_user.id == user.id
         end
 
         can :read, User
 
-        can :update, Userstat do |userstat|
+        can :manage, Userstat do |userstat|
             user_userstats = user.userstats.map(&:id)
-            user_userstats.include? = userstat.id
+            user_userstats.include? userstat.id
         end
     else
         can :create, User

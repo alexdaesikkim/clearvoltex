@@ -37,4 +37,11 @@ class User < ApplicationRecord
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+
+	ROLES = [['admin', :admin],['regular', :regular]]
+
+    def role?(authorized_role)
+      return false if role.nil?
+      role.downcase.to_sym == authorized_role
+    end
 end

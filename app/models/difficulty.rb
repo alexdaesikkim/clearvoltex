@@ -10,4 +10,25 @@ class Difficulty < ApplicationRecord
 			return "not_played"
 		end
 	end
+
+	def tag_to_int
+		x = 0
+		case self.difficulty_tag
+	        when "adv"
+	        	x = 2
+	        when "exh"
+	        	x = 3
+	        when "mxm"
+	        	x = 4
+	        when "inf"
+	        	x = 5
+	        when "grv"
+	        	x = 6
+	        when "hvn"
+	        	x = 7
+	        else
+	          x = 1
+    	end
+    	return x
+	end
 end

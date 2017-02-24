@@ -1,4 +1,4 @@
-<center><h2>Level <%= level %></h2></center>
+<center><h3>Level <%= level %></h3></center>
 <% tiers.each do |tier| %>
 	<% if tier.exists? %>
 		<h4>
@@ -14,7 +14,7 @@
 		<div class="section">
 			<% tier.each do |difficulty| %>
 				<span class="parent">
-					<img class=<%= difficulty.user_clear(@user.id) %> src= <%= asset_url "song/#{difficulty.song_id}/#{difficulty.difficulty_name}.jpg" %> onclick="update_clear(this, <%= difficulty.id %>)" />
+					<img class=<%= difficulty.user_clear(@user.id) %> src= <%= asset_url "song#{difficulty.photo}" %> onclick="update_clear(this, <%= difficulty.id %>)" />
 					<img class="difficulty_tag" src = <%= asset_url "difficulty/#{difficulty.difficulty_name}.png" %> />
 				</span>
 			<% end %>

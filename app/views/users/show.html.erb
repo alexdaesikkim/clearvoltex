@@ -1,44 +1,51 @@
 <br>
+<center><h2><%= @user.display_name %>'S STATS</h2></center>
+<br>
 <div class="container">
   <div class="col s12">
     <ul class="tabs tabs-fixed-width" id="level">
+      <li class="tab"><a href="#tab-1">Stats</a></li>
       <!--<li class="tab"><a href="#level-6">11 - 12</a></li>
       <li class="tab"><a href="#level-7">13 - 14</a></li>-->
-      <li class="tab"><a href="#level-8">Level 17</a></li>
-      <li class="tab"><a class="active" href="#level-9">Level 18</a></li>
-      <li class="tab"><a href="#level-10">Level 19 - 20</a></li>
+      <li class="tab"><a class="active" href="#tab-4">Level 17</a></li>
+      <li class="tab"><a href="#tab-5">Level 18</a></li>
+      <li class="tab"><a href="#tab-6">Level 19 - 20</a></li>
     </ul>
+  </div>
+  <div id="tab-1" class="col s12">
+    <%= render 'userstats' %>
   </div>
   <!--<div id="level-6" class="col s12">
   </div>
   <div id="level-7" class="col s12">
   </div>-->
-  <div id="level-8" class="col s12">
+  <div id="tab-4" class="col s12">
     <%= render 'userstatview', tiers: @level_17, level: 17 %>
   </div>
-  <div id="level-9" class="col s12">
+  <div id="tab-5" class="col s12">
     <%= render 'userstatview', tiers: @level_18, level: 18 %>
   </div>
-  <div id="level-10" class="col s12"> 
+  <div id="tab-6" class="col s12"> 
     <%= render 'userstatview', tiers: @level_19, level: 19 %>
     <%= render 'userstatview', tiers: @level_20, level: 20 %>
   </div>
 </div>
 
-<center><%= link_to 'Edit Credentials', edit_user_path(@user) %></center>
+<% if can? :manage, @user %>
+  <%= javascript_tag do %>
 
-<%= javascript_tag do %>
-  $(document).ready(function(){
-    $('ul.tabs').tabs('select_tab', 'tab_id');
-  });
+    $(document).ready(function(){
+      $('ul.tabs').tabs('select_tab', 'tab_id');
+    });
 
-  function update_clear(difficulty, current_id){
-    $.post(
-      '/userstats/update.json',
-      { user_id: <%= @user.id %>, diff_id: current_id },
-      function(data){
-        difficulty.className = data.clear
-      }
-    )
-  }
+    function update_clear(difficulty, current_id){
+      $.post(
+        '/userstats/update.json',
+        { user_id: <%= @user.id %>, diff_id: current_id },
+        function(data){
+          difficulty.className = data.clear
+        }
+      )
+    }
+  <% end %>
 <% end %>

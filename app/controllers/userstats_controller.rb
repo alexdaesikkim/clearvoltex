@@ -30,7 +30,7 @@ class UserstatsController < ApplicationController
     respond_to do |format|
       if @userstat.save
         flash[:success] = "Welcome to ClearVoltex!"
-        format.html { redirect_to @userstat, notice: 'Userstat was successfully created.' }
+        format.html { redirect_to @userstat }
         format.json { render :show, status: :created, location: @userstat }
       else
         format.html { render :new }
@@ -57,28 +57,26 @@ class UserstatsController < ApplicationController
   def update_clearstats
     @userstat = Userstat.where(:user_id=>params["user_id"]).where(:difficulty_id=>params["diff_id"]).first
     if(!@userstat.nil?)
-      puts "case1"
       clears = ["not_played", "failed", "cleared", "excessive", "UC", "PUC"]
       clearstate = @userstat.clear
       x = 0
       case clearstate
-      when "not_played"
-        x = 1
-      when "failed"
-        x = 2
-      when "cleared"
-        x = 3
-      when "excessive"
-        x = 4
-      when "UC"
-        x = 5
-      else
-        x = 0 
+        when "not_played"
+          x = 1
+        when "failed"
+          x = 2
+        when "cleared"
+          x = 3
+        when "excessive"
+          x = 4
+        when "UC"
+          x = 5
+        else
+          x = 0 
       end
       @userstat.clear = clears[x]
       @userstat.save
     else
-      puts "case2"
       @userstat = Userstat.new
       @userstat.difficulty_id = params["diff_id"]
       @userstat.user_id = params["user_id"]
