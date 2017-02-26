@@ -1,19 +1,17 @@
-<br>
 <center><h2><%= @user.display_name %>'S STATS</h2></center>
-<br>
 <div class="container">
   <div class="col s12">
     <ul class="tabs tabs-fixed-width" id="level">
-      <li class="tab"><a href="#tab-1">Stats</a></li>
+      <li class="tab"><a class="active" href="#tab-1">Stats</a></li>
       <!--<li class="tab"><a href="#level-6">11 - 12</a></li>
       <li class="tab"><a href="#level-7">13 - 14</a></li>-->
-      <li class="tab"><a class="active" href="#tab-4">Level 17</a></li>
+      <li class="tab"><a href="#tab-4">Level 17</a></li>
       <li class="tab"><a href="#tab-5">Level 18</a></li>
       <li class="tab"><a href="#tab-6">Level 19 - 20</a></li>
     </ul>
   </div>
   <div id="tab-1" class="col s12">
-    <%= render 'userstats' %>
+    <%= render 'current_userstats' %>
   </div>
   <!--<div id="level-6" class="col s12">
   </div>

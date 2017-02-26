@@ -1,0 +1,37 @@
+<div class="container">
+	<h4 class = "center-align">All Songs (Played: <%= @user.userstats.count %>/<%= Difficulty.count %>)</h4>
+	<div class="row">
+		<div class="col s12 l6">
+		</div>
+		<div class="col s12 l6">
+			<ul class="collapsible popout" data-collapsible="accordion">
+				<% for x in 0..3 do %>
+					<li>
+					<div class="collapsible-header"><i class="material-icons">place</i><%= @titles[x] %></div>
+					<div class="collapsible-body">
+						<div class="row">
+							<div class="col s12 l6">
+								PERFECT: <%= @failed[x].count %></br>
+								ULTIMATE CHAIN: <%= @cleared[x].count %></br>
+								EXC CLEARED: <%= @excessive[x].count %></br>
+								CLEARED: <%= @UC[x].count %></br>
+								FAILED: <%= @PUC[x].count %></br>
+							</div>
+							<div class="col s12 l6">
+								<%= pie_chart [ 
+												["FAILED", @failed[x].count],
+												["CLEARED", @cleared[x].count],
+												["EXC CLEARED", @excessive[x].count],
+												["ULTIMATE CHAIN", @UC[x].count],
+												["PERFECT", @PUC[x].count]
+											  ],
+											colors: [ '#808080', '#00cc00', '#990099', '#ff3399', '#ffff00' ] %>
+							</div>
+						</div>
+					</div>
+					</li>
+				<% end %>
+	  		</ul>
+	  	</div>
+	</div>
+</div>

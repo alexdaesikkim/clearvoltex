@@ -1,0 +1,21 @@
+Songs played = <%= current_user.userstats.count %>
+PUC = <%= current_user.userstats.where("clear = ?", "PUC").count %>
+<h3 class = "center-align">Welcome back <%= current_user.display_name %>!</h3>
+<div class="container">
+	<h4 class = "center-align">Quick Summary</h4>
+	<div class="row">
+		<div class="col s3 offset-s3">
+			SOME STUPID STAT
+		</div>
+		<div class="col s4">
+			<%= pie_chart [ 
+							["FAILED", current_user.userstats.where("clear = ?", "failed").count],
+							["CLEARED", current_user.userstats.where("clear = ?", "cleared").count],
+							["EXC CLEARED", current_user.userstats.where("clear = ?", "excessive").count],
+							["ULTIMATE CHAIN", current_user.userstats.where("clear = ?", "UC").count],
+							["PERFECT", current_user.userstats.where("clear = ?", "PUC").count]
+						  ],
+						colors: [ '#808080', '#00cc00', '#990099', '#ff3399', '#ffff00' ] %>
+		</div>
+	</div>
+</div>
