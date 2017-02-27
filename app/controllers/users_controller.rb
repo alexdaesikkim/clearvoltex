@@ -11,44 +11,27 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @userstats = @user.userstats
-    #@level_15 = @userstats.joins(:difficulty).where("level = 15")
-    #@level_16 = @userstats.joins(:difficulty).where("level = 16")
-    @clear17 = @userstats.joins(:difficulty).where("level = 17")
-    @clear18 = @userstats.joins(:difficulty).where("level = 18")
-    @clear19_20 = @userstats.joins(:difficulty).where("level = 19 OR level = 20")
-
-    @titles = ["All Songs", "Level 17", "Level 18", "Level 19~20"]
-
-    @failed = [
-      @userstats.where("clear = ?", "failed"),
-      @clear17.where("clear = ?", "failed"),
-      @clear18.where("clear = ?", "failed"),
-      @clear19_20.where("clear = ?", "failed")
+    @level_15 = [
+      Difficulty.where("level = 15 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 15 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
-    @cleared = [
-      @userstats.where("clear = ?", "cleared"),
-      @clear17.where("clear = ?", "cleared"),
-      @clear18.where("clear = ?", "cleared"),
-      @clear19_20.where("clear = ?", "cleared")
-    ]
-    @excessive = [
-      @userstats.where("clear = ?", "excessive"),
-      @clear17.where("clear = ?", "excessive"),
-      @clear18.where("clear = ?", "excessive"),
-      @clear19_20.where("clear = ?", "excessive")
-    ]
-    @UC = [
-      @userstats.where("clear = ?", "UC"),
-      @clear17.where("clear = ?", "UC"),
-      @clear18.where("clear = ?", "UC"),
-      @clear19_20.where("clear = ?", "UC")
-    ]
-    @PUC = [
-      @userstats.where("clear = ?", "PUC"),
-      @clear17.where("clear = ?", "PUC"),
-      @clear18.where("clear = ?", "PUC"),
-      @clear19_20.where("clear = ?", "PUC")
+    @level_16 = [
+      Difficulty.where("level = 16 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("level = 16 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
     @level_17 = [
       Difficulty.where("level = 17 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),

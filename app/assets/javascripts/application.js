@@ -17,3 +17,9 @@
 //= require_tree .
 //= require Chart.bundle
 //= require chartkick
+$(document).ready(function(){
+	$('.toc-wrapper').pushpin({
+	  offset: 200
+	});		
+    $('.scrollspy').scrollSpy();
+ });

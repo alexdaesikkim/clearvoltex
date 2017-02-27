@@ -1,0 +1,20 @@
+<div class="toc-wrapper pin-top">
+	<ul class="section table-of-contents">
+	<center>Level <%= level %></center>
+		<% tiers.each do |tier| %>
+			<% if tier.exists? %>
+				<li><a href=<%= "##{level}_#{tier.first.tier}" %>>
+					<% if tier.first.tier == "N" %>
+						Not Rated
+					<% elsif tier.first.tier == "P" %>
+						Personal
+					<% else %>
+						<%= tier.first.tier %>
+					<% end %>
+				</a></li>
+		<% end %>
+	<% end %>
+	</ul>
+</div>
+
+<!-- figure out how I can create page without having all userstats -->
