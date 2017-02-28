@@ -15,6 +15,12 @@
  */
  @import "materialize";
 
+ .preloader-wrapper{
+    left: 50%;
+    top: 400px;
+    background-color: #FFFFFF;
+ }
+
 .tabs {
 overflow-x: hidden;
 }
