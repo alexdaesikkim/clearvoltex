@@ -1,0 +1,34 @@
+<div class="toc-wrapper">
+	<ul class="section table-of-contents">
+	<h5>Level <%= level19 %></h5>
+		<% tier19.each do |tier| %>
+			<% if tier.exists? %>
+				<li><a href=<%= "##{level19}_#{tier.first.tier}" %> class = "">
+					<% if tier.first.tier == "N" %>
+						Not Rated
+					<% elsif tier.first.tier == "P" %>
+						Personal
+					<% else %>
+						<%= tier.first.tier %>
+					<% end %>
+				</a></li>
+			<% end %>
+		<% end %>
+	<h5>Level <%= level20 %></h5>
+		<% tier20.each do |tier| %>
+			<% if tier.exists? %>
+				<li><a href=<%= "##{level20}_#{tier.first.tier}" %>>
+					<% if tier.first.tier == "N" %>
+						Not Rated
+					<% elsif tier.first.tier == "P" %>
+						Personal
+					<% else %>
+						<%= tier.first.tier %>
+					<% end %>
+				</a></li>
+			<% end %>
+		<% end %>
+	</ul>
+</div>
+
+<!-- figure out how I can create page without having all userstats -->

@@ -12,11 +12,7 @@
   <body>
     <%= render 'partials/flash' %>
     <%= render 'partials/nav' %>
+    <div id = "top" class="section scrollspy" style="display:block;line-height:0px;height:0px;overflow:hidden;padding: 0;"></div>
     <%= yield %>
   </body>
-  <script>
-    $(document).ready(function(){
-      $(".button-collapse").sideNav();
-    });
-  </script>
 </html>

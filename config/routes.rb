@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   resources :users
 
-  post		'/userstats/update' => 'userstats#update_clearstats'
+  post		'/userstats/update_clear' => 'userstats#update_clearstats'
+  post		'/userstats/update_score' => 'userstats#update_scorestats'
 
   get		'/signup' => 'users#new'
 

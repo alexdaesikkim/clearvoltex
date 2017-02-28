@@ -2,6 +2,15 @@ class Difficulty < ApplicationRecord
 	belongs_to :song
 	has_many :userstats
 
+	def user_score(id)
+		userstat = self.userstats.where(:user_id => id)
+		if userstat.exists? && (!userstat.first.score.nil?)
+			return userstat.first.score
+		else
+			return "not_played"
+		end
+	end
+
 	def user_clear(id)
 		userstat = self.userstats.where(:user_id => id)
 		if userstat.exists?

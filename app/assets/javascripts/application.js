@@ -18,8 +18,8 @@
 //= require Chart.bundle
 //= require chartkick
 $(document).ready(function(){
-	$('.toc-wrapper').pushpin({
-	  offset: 200
-	});		
-    $('.scrollspy').scrollSpy();
+	$(".button-collapse").sideNav();
+	$('.toc-wrapper').pushpin({top: $('.toc-wrapper').offset().top,
+							   bottom: $('.toc-wrapper').offset().bottom});
+	$('.scrollspy').scrollSpy();
  });

@@ -1,6 +1,7 @@
 <center><h3>Level <%= level %></h3></center>
 <% tiers.each do |tier| %>
 	<% if tier.exists? %>
+	<div id = <%= "#{level}_#{tier.first.tier}" %> class="section scrollspy">
 		<h4>
 		<% if tier.first.tier == "N" %>
 			Not Rated
@@ -10,17 +11,17 @@
 			<%= tier.first.tier %>
 		<% end %>	
 		</h4>
-		<div id = <%= "#{level}_#{tier.first.tier}"%> class="section scrollspy"></div>
+		
 		<div class="divider"></div>
 		<div class="section">
 			<% tier.each do |difficulty| %>
 				<span class="parent">
-					<img class=<%= difficulty.user_clear(@user.id) %> src= <%= asset_url "song#{difficulty.photo}" %> onclick="update_clear(this, <%= difficulty.id %>)" />
+					<img class=<%= difficulty.user_clear(@user.id) %> src= <%= asset_url "song#{difficulty.photo}" %> onclick="update(this.parentElement, <%= difficulty.id %>)" />
 					<img class="difficulty_tag" src = <%= asset_url "difficulty/#{difficulty.difficulty_name}.png" %> />
+					<img class="score_tag" src = <%= asset_url "grades/#{difficulty.user_score(@user.id)}.png" %> />
 				</span>
 			<% end %>
 		</div>
+	</div>
 	<% end %>
 <% end %>
-
-<!-- figure out how I can create page without having all userstats -->

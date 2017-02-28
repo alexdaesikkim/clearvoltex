@@ -1,5 +1,19 @@
-<center><h2><%= @user.display_name %>'S STATS</h2></center>
 <div class="container">
+  <div class = "row" style="height:100px">
+    <div class = "col s8 offset-s2">
+      <center><h2><%= @user.display_name %>'S STATS</h2></center>
+    </div>
+    <div class = "switch-wrapper col s2 valign-wrapper">
+          <div class="switch valign center-block">
+              <label>
+                  CLEAR
+                  <input type="checkbox" id = "clear_score">
+                  <span class="lever"></span>
+                  SCORE
+              </label>
+          </div> 
+    </div>
+  </div>
   <div class = "row">
     <div class = "col s12 m10 offset-m1">
       <ul class="tabs tabs-fixed-width" id="level">
@@ -50,7 +64,7 @@
         <%= render 'userstatview', tiers: @level_20, level: 20 %>
       </div>
       <div class = "col hide-on-small-only m1">
-        <%= render 'scrollspy', tiers: @level_19, level: 19 %>
+        <%= render 'scrollspylast', tier19: @level_19, level19: 19, tier20: @level_20, level20: 20 %>
       </div>
     </div>
   </div>
@@ -63,14 +77,25 @@
       $('ul.tabs').tabs('select_tab', 'tab_id');
     });
 
-    function update_clear(difficulty, current_id){
-      $.post(
-        '/userstats/update.json',
-        { user_id: <%= @user.id %>, diff_id: current_id },
-        function(data){
-          difficulty.className = data.clear;
-        }
-      )
+    function update(diff, current_id){
+      if(document.getElementById('clear_score').checked){
+        $.post(
+          '/userstats/update_score.json',
+          { user_id: <%= @user.id %>, diff_id: current_id },
+          function(data){
+            diff.getElementsByTagName('img')[2].src = "/assets/grades/"+data.score+".png";
+          }
+        )
+      }
+      else{
+        $.post(
+          '/userstats/update_clear.json',
+          { user_id: <%= @user.id %>, diff_id: current_id },
+          function(data){
+            diff.getElementsByTagName('img')[0].className = data.clear;
+          }
+        )
+      }
     }
   <% end %>
 <% end %>
