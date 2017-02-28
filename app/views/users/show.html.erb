@@ -1,75 +1,76 @@
-<div class="container">
-  <div class = "row" style="height:100px">
-    <div class = "col s8 offset-s2">
-      <center><h2><%= @user.display_name %>'S STATS</h2></center>
+<div class = "loader">
+  <div class="container">
+    <div class = "row" style="height:100px">
+      <div class = "col s8 offset-s2">
+        <center><h2><%= @user.display_name %>'S STATS</h2></center>
+      </div>
+      <div class = "switch-wrapper col s2 valign-wrapper">
+            <div class="switch valign center-block">
+                <label>
+                    CLEAR
+                    <input type="checkbox" id = "clear_score">
+                    <span class="lever"></span>
+                    SCORE
+                </label>
+            </div> 
+      </div>
     </div>
-    <div class = "switch-wrapper col s2 valign-wrapper">
-          <div class="switch valign center-block">
-              <label>
-                  CLEAR
-                  <input type="checkbox" id = "clear_score">
-                  <span class="lever"></span>
-                  SCORE
-              </label>
-          </div> 
-    </div>
-  </div>
-  <div class = "row">
-    <div class = "col s12 m10 offset-m1">
-      <ul class="tabs tabs-fixed-width" id="level">
-        <li class="tab"><a href="#tab-1">Level 15</a></li>
-        <li class="tab"><a href="#tab-2">Level 16</a></li>
-        <li class="tab"><a href="#tab-3">Level 17</a></li>
-        <li class="tab"><a href="#tab-4">Level 18</a></li>
-        <li class="tab"><a href="#tab-5">Level 19 - 20</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class = "row">
-    <div id="tab-1">
+    <div class = "row">
       <div class = "col s12 m10 offset-m1">
-        <%= render 'userstatview', tiers: @level_15, level: 15 %>
-      </div>
-      <div class = "col hide-on-small-only m1">
-        <%= render 'scrollspy', tiers: @level_15, level: 15 %>
-      </div>
-    </div>
-    <div id="tab-2">
-      <div class="col s12 m10 offset-m1">
-        <%= render 'userstatview', tiers: @level_16, level: 16 %>
-      </div>
-      <div class = "col hide-on-small-only m1">
-        <%= render 'scrollspy', tiers: @level_16, level: 16 %>
+        <ul class="tabs tabs-fixed-width" id="level">
+          <li class="tab"><a href="#tab-1">Level 15</a></li>
+          <li class="tab"><a href="#tab-2">Level 16</a></li>
+          <li class="tab"><a href="#tab-3">Level 17</a></li>
+          <li class="tab"><a href="#tab-4">Level 18</a></li>
+          <li class="tab"><a href="#tab-5">Level 19 - 20</a></li>
+        </ul>
       </div>
     </div>
-    <div id="tab-3">
-      <div class="col s12 m10 offset-m1">
-        <%= render 'userstatview', tiers: @level_17, level: 17 %>
+    <div class = "row">
+      <div id="tab-1">
+        <div class = "col s12 m10 offset-m1">
+          <%= render 'userstatview', tiers: @level_15, level: 15 %>
+        </div>
+        <div class = "col hide-on-small-only m1">
+          <%= render 'scrollspy', tiers: @level_15, level: 15 %>
+        </div>
       </div>
-      <div class = "col hide-on-small-only m1">
-        <%= render 'scrollspy', tiers: @level_17, level: 17 %>
+      <div id="tab-2">
+        <div class="col s12 m10 offset-m1">
+          <%= render 'userstatview', tiers: @level_16, level: 16 %>
+        </div>
+        <div class = "col hide-on-small-only m1">
+          <%= render 'scrollspy', tiers: @level_16, level: 16 %>
+        </div>
       </div>
-    </div>
-    <div id="tab-4">
-      <div class="col s12 m10 offset-m1">
-        <%= render 'userstatview', tiers: @level_18, level: 18 %>
+      <div id="tab-3">
+        <div class="col s12 m10 offset-m1">
+          <%= render 'userstatview', tiers: @level_17, level: 17 %>
+        </div>
+        <div class = "col hide-on-small-only m1">
+          <%= render 'scrollspy', tiers: @level_17, level: 17 %>
+        </div>
       </div>
-      <div class = "col hide-on-small-only m1">
-        <%= render 'scrollspy', tiers: @level_18, level: 18 %>
+      <div id="tab-4">
+        <div class="col s12 m10 offset-m1">
+          <%= render 'userstatview', tiers: @level_18, level: 18 %>
+        </div>
+        <div class = "col hide-on-small-only m1">
+          <%= render 'scrollspy', tiers: @level_18, level: 18 %>
+        </div>
       </div>
-    </div>
-    <div id="tab-5">
-      <div class="col s12 m10 offset-m1">
-        <%= render 'userstatview', tiers: @level_19, level: 19 %>
-        <%= render 'userstatview', tiers: @level_20, level: 20 %>
-      </div>
-      <div class = "col hide-on-small-only m1">
-        <%= render 'scrollspylast', tier19: @level_19, level19: 19, tier20: @level_20, level20: 20 %>
+      <div id="tab-5">
+        <div class="col s12 m10 offset-m1">
+          <%= render 'userstatview', tiers: @level_19, level: 19 %>
+          <%= render 'userstatview', tiers: @level_20, level: 20 %>
+        </div>
+        <div class = "col hide-on-small-only m1">
+          <%= render 'scrollspylast', tier19: @level_19, level19: 19, tier20: @level_20, level20: 20 %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 <% if can? :manage, @user %>
   <%= javascript_tag do %>
 
@@ -99,3 +100,5 @@
     }
   <% end %>
 <% end %>
+<script>
+</script>
