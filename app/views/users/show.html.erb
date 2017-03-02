@@ -3,21 +3,11 @@
       <div class = "col s8 offset-s2">
         <center><h2><%= @user.display_name %>'S STATS</h2></center>
       </div>
-      <div class = "switch-wrapper col s2 valign-wrapper">
-            <div class="switch valign center-block">
-                <label>
-                    CLEAR
-                    <input type="checkbox" id = "clear_score">
-                    <span class="lever"></span>
-                    SCORE
-                </label>
-            </div> 
-      </div>
     </div>
     <div class = "row">
       <div class = "col s12 m10 offset-m1">
         <ul class="tabs tabs-fixed-width" id="level">
-          <li class="tab"><a href="#tab-1">Level 15</a></li>
+          <li class="tab"><a href="#tab-1" class="active">Level 15</a></li>
           <li class="tab"><a href="#tab-2">Level 16</a></li>
           <li class="tab"><a href="#tab-3">Level 17</a></li>
           <li class="tab"><a href="#tab-4">Level 18</a></li>
@@ -72,18 +62,35 @@
 </div>
 <% if can? :manage, @user %>
   <%= javascript_tag do %>
+    var tag = 0;
 
-    function update(diff, current_id){
-      if(document.getElementById('clear_score').checked){
-        $.post(
-          '/userstats/update_score.json',
-          { user_id: <%= @user.id %>, diff_id: current_id },
-          function(data){
-            diff.getElementsByTagName('img')[2].src = "/assets/grades/"+data.score+".png";
-          }
-        )
+    var score_assets=[
+      "<%= asset_url "grades/not_played.png" %>",
+      "<%= asset_url "grades/D.png" %>",
+      "<%= asset_url "grades/C.png" %>",
+      "<%= asset_url "grades/B.png" %>",
+      "<%= asset_url "grades/A.png" %>",
+      "<%= asset_url "grades/Aplus.png" %>",
+      "<%= asset_url "grades/AA.png" %>",
+      "<%= asset_url "grades/AAplus.png" %>",
+      "<%= asset_url "grades/AAA.png" %>",
+      "<%= asset_url "grades/AAAplus.png" %>",
+      "<%= asset_url "grades/S.png" %>"
+    ];
+
+    function change_status(button){
+      if(tag == 0){
+        tag = 1;
+        button.text = "Score";
       }
       else{
+        tag = 0;
+        button.text = "Clear";
+      }
+    }
+
+    function update(diff, current_id){
+      if(tag == 0){
         $.post(
           '/userstats/update_clear.json',
           { user_id: <%= @user.id %>, diff_id: current_id },
@@ -92,6 +99,29 @@
           }
         )
       }
+      else{
+        $.post(
+          '/userstats/update_score.json',
+          { user_id: <%= @user.id %>, diff_id: current_id },
+          function(data){
+            diff.getElementsByTagName('img')[2].src = score_assets[str_to_int(data.score)];
+          }
+        )
+      }
+    }
+
+    function str_to_int(grade){
+      if(grade == "not_played") return 0;
+      if(grade == "D") return 1;
+      if(grade == "C") return 2;
+      if(grade == "B") return 3;
+      if(grade == "A") return 4;
+      if(grade == "Aplus") return 5;
+      if(grade == "AA") return 6;
+      if(grade == "AAplus") return 7;
+      if(grade == "AAA") return 8;
+      if(grade == "AAAplus") return 9;
+      return 10;
     }
   <% end %>
 <% end %>

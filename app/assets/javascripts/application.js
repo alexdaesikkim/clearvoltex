@@ -12,21 +12,22 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require materialize-sprockets
+//= require materialize
 //= require_tree .
 //= require Chart.bundle
 //= require chartkick
-$(window).on('turbolinks:load', function(){
-	$(".preloader-wrapper").fadeOut("slow");
-	$('#top').delay(1000).fadeIn("slow");
+
+$(window).on('load', function(){
+	$(".preloader-wrapper").delay(500).fadeOut("slow");
+	$('#top').delay(1500).fadeIn("slow");
 	setTimeout(function(){
 		$('ul.tabs').tabs('select_tab', 'tab_id');
 		$('.toc-wrapper').pushpin({top: $('.toc-wrapper').offset().top,
-								   bottom: $('.toc-wrapper').offset().bottom});
+								   bottom: $('.toc-wrapper').offset().bottom,
+								   offset: 100});
 		$('.scrollspy').scrollSpy();
 		$('.button-collapse').sideNav();	
-	},1001);
+	},1501);
  });
 
 

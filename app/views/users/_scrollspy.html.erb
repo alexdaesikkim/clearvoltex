@@ -1,13 +1,14 @@
 <div class="toc-wrapper">
+    <a class="waves-effect waves-light btn" onclick="change_status(this)">Clear</a>
 	<ul class="section table-of-contents">
-	<h5>Level <%= level %></h5>
+	Level <%= level %>
 		<% tiers.each do |tier| %>
 			<% if tier.exists? %>
 				<li><a href=<%= "##{level}_#{tier.first.tier}" %>><% if tier.first.tier == "N" %>Not Rated<% elsif tier.first.tier == "P" %>Personal<% else %><%= tier.first.tier %><% end %></a></li>
 		<% end %>
 	<% end %>
 	<br>
-	<li><a href="#top">Back to Top</a></li>
+	<li><a href="#top">Top</a></li>
 	</ul>
 </div>
 
