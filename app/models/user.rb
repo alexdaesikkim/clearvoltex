@@ -4,6 +4,7 @@ class User < ApplicationRecord
 	before_save { self.email = email.downcase }
 	before_save { self.username = username.downcase }
 	has_many :userstats
+	has_many :comments
 
 	validates :username, presence: true, length: { in: 6..20 },
 						 uniqueness: { case_sensitive: false }
@@ -37,6 +38,16 @@ class User < ApplicationRecord
 	def forget
 		update_attribute(:remember_digest, nil)
 	end
+
+	def karma
+		point = 0
+		user_comments = self.comments
+		user_comments.each do |comment|
+			point += comment.get_upvotes.size - comment.get_downvotes.size
+		end
+		return point
+	end
+
 
 	ROLES = [['admin', :admin],['regular', :regular]]
 

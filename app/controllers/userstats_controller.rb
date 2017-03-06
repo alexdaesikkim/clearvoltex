@@ -55,7 +55,7 @@ class UserstatsController < ApplicationController
   end
 
   def update_clearstats
-    @userstat = Userstat.where(:user_id=>params["user_id"]).where(:difficulty_id=>params["diff_id"]).first
+    @userstat = Userstat.where(:user_id=>params[:userstat][:user_id]).where(:difficulty_id=>params[:userstat][:difficulty_id]).first
     if(!@userstat.nil?)
       clears = ["not_played", "failed", "cleared", "excessive", "UC", "PUC"]
       clearstate = @userstat.clear
@@ -77,9 +77,7 @@ class UserstatsController < ApplicationController
       @userstat.clear = clears[x]
       @userstat.save
     else
-      @userstat = Userstat.new
-      @userstat.difficulty_id = params["diff_id"]
-      @userstat.user_id = params["user_id"]
+      @userstat = Userstat.new(userstat_params)
       @userstat.clear = "failed"
       @userstat.score = "not_played"
       @userstat.save
@@ -90,7 +88,7 @@ class UserstatsController < ApplicationController
   end
 
   def update_scorestats
-    @userstat = Userstat.where(:user_id=>params["user_id"]).where(:difficulty_id=>params["diff_id"]).first
+    @userstat = Userstat.where(:user_id=>params[:userstat][:user_id]).where(:difficulty_id=>params[:userstat][:difficulty_id]).first
     if(!@userstat.nil?)
       scores = ["not_played", "D", "C", "B", "A", "Aplus", "AA", "AAplus", "AAA", "AAAplus", "S"]
       if(@userstat.score.nil?)
@@ -127,9 +125,7 @@ class UserstatsController < ApplicationController
         @userstat.save
       end
     else
-      @userstat = Userstat.new
-      @userstat.difficulty_id = params["diff_id"]
-      @userstat.user_id = params["user_id"]
+      @userstat = Userstat.new(userstat_params)
       @userstat.clear = "not_played"
       @userstat.score = "D"
       @userstat.save
@@ -157,6 +153,6 @@ class UserstatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def userstat_params
-      params.require(:userstat).permit(:user_id, :difficulty_id, :clear)
+      params.require(:userstat).permit(:user_id, :difficulty_id)
     end
 end

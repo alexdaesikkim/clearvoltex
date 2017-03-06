@@ -93,7 +93,11 @@
       if(tag == 0){
         $.post(
           '/userstats/update_clear.json',
-          { user_id: <%= @user.id %>, diff_id: current_id },
+          { userstat:
+            {
+              user_id: <%= @user.id %>, difficulty_id: current_id
+            }
+          },
           function(data){
             diff.getElementsByTagName('img')[0].className = data.clear;
           }
@@ -102,7 +106,11 @@
       else{
         $.post(
           '/userstats/update_score.json',
-          { user_id: <%= @user.id %>, diff_id: current_id },
+          { userstat:
+            {
+              user_id: <%= @user.id %>, difficulty_id: current_id
+            }
+          },
           function(data){
             diff.getElementsByTagName('img')[2].src = score_assets[str_to_int(data.score)];
           }

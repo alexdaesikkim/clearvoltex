@@ -15,9 +15,9 @@
  */
  @import "materialize";
 
- .preloader-wrapper{
-    left: 50%;
-    top: 400px;
+.preloader-wrapper{
+    left: 47.5%;
+    top: 350px;
     background-color: #FFFFFF;
  }
 
@@ -64,8 +64,4 @@ overflow-x: hidden;
 
 .scrollspy{
 	position: relative;
-}
-
-.switch-wrapper{
-  height: 100%;
 }

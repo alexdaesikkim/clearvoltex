@@ -1,6 +1,7 @@
 class Difficulty < ApplicationRecord
 	belongs_to :song
 	has_many :userstats
+	has_many :comments
 
 	def user_score(id)
 		userstat = self.userstats.where(:user_id => id)
@@ -20,24 +21,22 @@ class Difficulty < ApplicationRecord
 		end
 	end
 
-	def tag_to_int
-		x = 0
-		case self.difficulty_tag
-	        when "adv"
-	        	x = 2
-	        when "exh"
-	        	x = 3
-	        when "mxm"
-	        	x = 4
-	        when "inf"
-	        	x = 5
-	        when "grv"
-	        	x = 6
-	        when "hvn"
-	        	x = 7
+	def tag_to_string
+		case self.difficulty_name
+	        when "2"
+	        	return "ADVANCE"
+	        when "3"
+	        	return "EXHAUST"
+	        when "4"
+	        	return "MAXIMUM"
+	        when "5"
+	        	return "INFINITE"
+	        when "6"
+	        	return "GRAVITY"
+	        when "7"
+	        	return "HEAVENLY"
 	        else
-	          x = 1
-    	end
-    	return x
+	        	return "NOVICE"
+	    end
 	end
 end

@@ -1,24 +1,57 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+	<div class="row">
+		<div class="col s12 m3 offset-m3 center">
+			<img src = <%= asset_url "song#{@difficulty.photo}" %> />
+		</div>
+		<div class="col s12 m6">
+			<h3><%= @difficulty.song_name %></h3>
+			<%= @difficulty.tag_to_string %> <%= @difficulty.level %>
+		</div>
+	</div>
+	<% if @difficulty.id == 1810 %>
+		<div class="row">
+			<div class="input-field col s12 m8 l6 offset-m2 offset-l3">
+				<center>
+				<h5>Comments are disabled for this song because PEOPLE CAN'T STOP ARGUING ABOUT THIS DAMN SONG.</h5>
+				<img src= <%= asset_url "random_assets/no_mercy.png" %> />
+				<h5>THANK YOU.</h5></center>
+			</div>
+		</div>
+	<% elsif @approved_comments.nil? %>
+		<div class="row">
 
-<p>
-  <strong>Song:</strong>
-  <%= @difficulty.song_id %>
-</p>
-
-<p>
-  <strong>Difficulty name:</strong>
-  <%= @difficulty.difficulty_name %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @difficulty.level %>
-</p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= @difficulty.photo %>
-</p>
-
-<%= link_to 'Edit', edit_difficulty_path(@difficulty) %> |
-<%= link_to 'Back', difficulties_path %>
+			</div>
+	<% else %>
+		<div class="row">
+			<form>
+		        <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
+		          <textarea id="textarea1" class="materialize-textarea" data-length="140"></textarea>
+		          <label for="textarea1">Leave a comment. A user may only leave one comment per chart.</label>
+		          <a class="waves-effect waves-light btn" onclick="submit_comment()">Submit
+				    <i class="material-icons right">send</i>
+				  </a>
+		        </div>
+		    </form>
+		</div>
+		<%= render 'comments', comments: @approved_comments %>
+	<% end %>
+</div>
+<%= javascript_tag do %>
+	function submit_comment(){
+		var comment_text = document.getElementById("textarea1").value;
+		$.post(
+          '/comments/create.json',
+          {
+          	comment:
+          	{
+	          	user_id: <%= current_user.id %>,
+	          	difficulty_id: <%= @difficulty.id %>,
+	          	content: comment_text
+	        }
+          },
+          function(){
+          	window.alert("posted?");
+          }
+        )
+	}
+<% end %>

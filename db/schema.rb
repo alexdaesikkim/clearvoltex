@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221065219) do
+ActiveRecord::Schema.define(version: 20170303211908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "difficulty_id"
+    t.text     "content"
+    t.integer  "rating",        default: 0
+    t.boolean  "pinned",        default: false
+    t.boolean  "approved",      default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
 
   create_table "difficulties", force: :cascade do |t|
     t.integer  "song_id"
@@ -33,9 +44,10 @@ ActiveRecord::Schema.define(version: 20170221065219) do
     t.string   "display_name"
     t.string   "email"
     t.string   "role"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "remember_digest"
+    t.integer  "rating",          default: 0
   end
 
   create_table "userstats", force: :cascade do |t|

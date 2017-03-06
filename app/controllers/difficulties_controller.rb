@@ -10,6 +10,9 @@ class DifficultiesController < ApplicationController
   # GET /difficulties/1
   # GET /difficulties/1.json
   def show
+    @pinned_comments = Comment.where("pinned = true")
+    @approved_comments = Comment.where("approved = true")
+    @filtered_comments = Comment.where("approved = false")
   end
 
   # GET /difficulties/new
@@ -25,18 +28,9 @@ class DifficultiesController < ApplicationController
   # POST /difficulties.json
   def create
     @difficulty = Difficulty.new(difficulty_params)
-    @users = User.all
 
     respond_to do |format|
       if @difficulty.save
-        @users.each do |user|
-          @userstat = Userstat.new
-          @userstat.user_id = user.id
-          @userstat.difficulty_id = @difficulty.id
-          @userstat.clear = "not_played"
-          @userstat.sort_string = (20-@difficulty.level).to_s + "_" + @difficulty.tier + "_" + @difficulty.difficulty_name + "_" + @difficulty.song.song_name + "_" + @difficulty.song.id.to_s
-          @userstat.save!
-        end
         format.html { redirect_to @difficulty, notice: 'Difficulty was successfully created.' }
         format.json { render :show, status: :created, location: @difficulty }
       else
