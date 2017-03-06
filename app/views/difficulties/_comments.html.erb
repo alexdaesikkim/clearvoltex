@@ -10,9 +10,11 @@
 			<br>
 		</div>
 		<div class="col s12 m8 l6 offset-m2 offset-l3 right-align">
+			<%= comment.get_likes.size - comment.get_dislikes.size %>
 			<a class="btn-floating waves-effect waves-light blue lighten-4"><i class="material-icons">keyboard_arrow_up</i></a>
 			<a class="btn-floating waves-effect waves-light blue lighten-4"><i class="material-icons">keyboard_arrow_down</i></a>
 			<a class="btn-floating waves-effect waves-light blue lighten-4"><i class="material-icons">warning</i></a>
+			
 		</div>
 	<% end %>
 </div>

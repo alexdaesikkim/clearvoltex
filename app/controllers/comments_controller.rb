@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 			@comment.approved = false
 		end
 		if @comment.save
+      @user.likes @comment
       flash[:success] = "Comment posted!"
 		else
 			flash[:success] = "Invalid operation"
@@ -23,6 +24,7 @@ class CommentsController < ApplicationController
 
   def upvote
     @user = User.find(params[:comment][:user_id])
+    if @user
   end
 
   def downvote
