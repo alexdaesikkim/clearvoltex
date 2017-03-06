@@ -2,20 +2,31 @@ class CommentsController < ApplicationController
 	def create
 		@comment = Comment.new(comment_params)
 		@user = User.find(params[:comment][:user_id])
+    @difficulty = Difficulty.find(params[:comment][:difficulty_id])
 		if (@user.rating < 0) && (@user.comments.count > 10)
 			@comment.approved = false
 		end
-		respond_to do |format|
-			if @comment.save
-  				format.json {render :json => {}}
-  			else
-  				format.json {render :json => {}}
-  			end
-  		end
-    end
+		if @comment.save
+      flash[:success] = "Comment posted!"
+		else
+			flash[:success] = "Invalid operation"
+		end
+  end
 
 	def destroy
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to difficulties_url, notice: 'Comment was successfully destroyed.' }
+      format.json { head :no_content }
+    end
 	end
+
+  def upvote
+    @user = User.find(params[:comment][:user_id])
+  end
+
+  def downvote
+  end
 
 private
     # Use callbacks to share common setup or constraints between actions.

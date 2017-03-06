@@ -99,7 +99,7 @@ class UsersController < ApplicationController
       if @user.save
         log_in(@user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.json { render :show, json: @user.flash, success: 'Welcome to ClearVoltex!'}
       else
         format.html { render :new }
         format.json { render json: @user.flash, status: :unprocessable_entity }
