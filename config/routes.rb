@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   delete	'/logout' => 'sessions#destroy'
 
   get		'/difficulty/:id' => 'difficulties#show'
+  get   '/stats' => 'home#stats'
 
   root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	def index
+	def stats
 		@user = current_user
 	    @userstats = @user.userstats
 	    #@level_15 = @userstats.joins(:difficulty).where("level = 15")
