@@ -1,9 +1,9 @@
 <div class="container">
 	<div class="row">
-		<div class="col s12 m4 offset-m2 center">
+		<div class="col s12 m4 offset-m2 center-align">
 			<img src = <%= asset_url "song#{@difficulty.photo}" %> />
 		</div>
-		<div class="col s12 m6">
+		<div class="col s12 m3 l6 offset-m1">
 			<h3><%= @difficulty.song_name %></h3>
 			<%= @difficulty.tag_to_string %> <%= @difficulty.level %>
 		</div>
@@ -26,7 +26,9 @@
 			<form>
 		        <div class="input-field col s12 m8 l6 offset-m2 offset-l3">
 		          <textarea id="textarea1" class="materialize-textarea" data-length="500"></textarea>
-		          <label for="textarea1">Leave a comment. A user may only leave one comment per chart.</label>
+		          <label for="textarea1">Leave a comment.</label>
+		        </div>
+		        <div class="col s12 m8 l6 offset-m2 offset-l3 right-align">
 		          <a class="waves-effect waves-light btn" onclick="submit_comment()">Submit
 				    <i class="material-icons right">send</i>
 				  </a>
@@ -47,6 +49,39 @@
 	          	user_id: <%= current_user.id %>,
 	          	difficulty_id: <%= @difficulty.id %>,
 	          	content: comment_text
+	        }
+          },
+          function(){
+          	window.location.reload();
+          }
+        )
+	}
+	function upvote(id){
+		window.alert(id);
+		$.post(
+          '/comments/upvote.json',
+          {
+          	comment:
+          	{
+	          	user_id: <%= current_user.id %>,
+	          	difficulty_id: <%= @difficulty.id %>,
+	          	id: id
+	        }
+          },
+          function(){
+          	window.location.reload();
+          }
+        )
+	}
+	function downvote(id){
+		$.post(
+          '/comments/downvote.json',
+          {
+          	comment:
+          	{
+	          	user_id: <%= current_user.id %>,
+	          	difficulty_id: <%= @difficulty.id %>,
+	          	id: id
 	        }
           },
           function(){

@@ -10,9 +10,9 @@ class DifficultiesController < ApplicationController
   # GET /difficulties/1
   # GET /difficulties/1.json
   def show
-    @pinned_comments = Comment.where("pinned = true")
-    @approved_comments = Comment.where("approved = true")
-    @filtered_comments = Comment.where("approved = false")
+    @pinned_comments = Comment.where("pinned = true AND difficulty_id = ? ", params[:id])
+    @approved_comments = Comment.where("approved = true AND difficulty_id = ? ", params[:id])
+    @filtered_comments = Comment.where("approved = false AND difficulty_id = ? ", params[:id])
   end
 
   # GET /difficulties/new

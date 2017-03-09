@@ -5,6 +5,7 @@ class User < ApplicationRecord
 	before_save { self.username = username.downcase }
 	has_many :userstats
 	has_many :comments
+	has_many :votes
 
 	validates :username, presence: true, length: { in: 6..20 },
 						 uniqueness: { case_sensitive: false }
@@ -15,7 +16,6 @@ class User < ApplicationRecord
 	validates :password_confirmation, presence: true, length: { minimum: 8 }
 
 	has_secure_password
-	acts_as_voter
 
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
