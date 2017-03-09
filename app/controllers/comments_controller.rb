@@ -27,6 +27,7 @@ class CommentsController < ApplicationController
 	end
 
 	def upvote
+    @comment = Comment.find(params[:comment][:id])
 		@user_vote = Vote.where("user_id = ? AND comment_id = ?", params[:comment][:user_id], params[:comment][:id]).first
 		if @user_vote.nil?
 			@user_vote = Vote.new
@@ -34,34 +35,53 @@ class CommentsController < ApplicationController
 			@user_vote.user_id = params[:comment][:user_id]
 			@user_vote.upvote = true
 			@user_vote.save
+      respond_to do |format|
+        format.json {render :json => {:status => true, :votes => @comment.user_votes}}
+      end
 		else
 			if @user_vote.upvote == false
 				@user_vote.downvote = false
 				@user_vote.upvote = true
 				@user_vote.save
+        respond_to do |format|
+          format.json {render :json => {:status => true, :votes => @comment.user_votes}}
+        end
 			else
 				@user_vote.upvote = false
 				@user_vote.save
+        respond_to do |format|
+          format.json {render :json => {:status => false, :votes => @comment.user_votes}}
+        end
 			end
 		end
 	end
 
 	def downvote
-		@user_vote = Vote.where("user_id = ? AND comment_id = ?", params[:comment][:user_id], params[:id]).first
+    @comment = Comment.find(params[:comment][:id])
+		@user_vote = Vote.where("user_id = ? AND comment_id = ?", params[:comment][:user_id], params[:comment][:id]).first
 		if @user_vote.nil?
 			@user_vote = Vote.new
-			@user_vote.comment_id = @comment.id
+			@user_vote.comment_id = params[:comment][:id]
 			@user_vote.user_id = params[:comment][:user_id]
 			@user_vote.downvote = true
 			@user_vote.save
+      respond_to do |format|
+        format.json {render :json => {:status => true, :votes => @comment.user_votes}}
+      end
 		else
 			if @user_vote.downvote == false
-				@user_vote.upvote = false
+        @user_vote.upvote = false
 				@user_vote.downvote = true
 				@user_vote.save
+        respond_to do |format|
+          format.json {render :json => {:status => true, :votes => @comment.user_votes}}
+        end
 			else
 				@user_vote.downvote = false
 				@user_vote.save
+        respond_to do |format|
+          format.json {render :json => {:status => false, :votes => @comment.user_votes}}
+        end
 			end
 		end
 	end

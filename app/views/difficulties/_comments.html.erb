@@ -10,10 +10,24 @@
 			<br>
 		</div>
 		<div class="col s12 m8 l6 offset-m2 offset-l3 right-align">
-			<%= comment.user_votes %>
-			<a id = <%= "upvote_#{@difficulty.id}" %> class="btn-floating waves-effect waves-light blue lighten-4" onclick="upvote(<%= comment.id %>)"><i class="material-icons">keyboard_arrow_up</i></a>
-			<a id = <%= "downvote_#{@difficulty.id}" %> class="btn-floating waves-effect waves-light blue lighten-4" onclick="downvote(<%= comment.id %>)"><i class="material-icons">keyboard_arrow_down</i></a>
-			<a id = <%= "warning_#{@difficulty.id}" %> class="btn-floating waves-effect waves-light blue lighten-4"><i class="material-icons">warning</i></a>			
+			<text id = <%= "votes_#{comment.id}" %>><%= comment.user_votes %></text>
+			<a id = <%= "upvote_#{comment.id}" %>
+			   class=
+				<% if comment.upvoted_by(current_user) %>
+					"btn-floating waves-effect waves-light green"
+				<% else %>
+					"btn-floating waves-effect waves-light green lighten-4"
+				<% end %>
+			   onclick="upvote(<%= comment.id %>)"><i class="material-icons">keyboard_arrow_up</i></a>
+			<a id = <%= "downvote_#{comment.id}" %>
+				class = 
+				<% if comment.downvoted_by(current_user) %>
+					"btn-floating waves-effect waves-light red"
+				<% else %>
+					"btn-floating waves-effect waves-light red lighten-4"
+				<% end %>
+			   onclick="downvote(<%= comment.id %>)"><i class="material-icons">keyboard_arrow_down</i></a>
+			<a id = <%= "warning_#{comment.id}" %> class="btn-floating waves-effect waves-light yellow"><i class="material-icons">warning</i></a>			
 		</div>
 	<% end %>
 </div>

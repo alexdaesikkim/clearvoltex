@@ -57,7 +57,10 @@
         )
 	}
 	function upvote(id){
-		window.alert(id);
+		var vote_id = document.getElementById("votes_" + id);
+		var upvote_id = document.getElementById("upvote_" + id);
+		var downvote_id = document.getElementById("downvote_" + id);
+
 		$.post(
           '/comments/upvote.json',
           {
@@ -68,12 +71,23 @@
 	          	id: id
 	        }
           },
-          function(){
-          	window.location.reload();
+          function(data){
+          	if(data.status){
+          		upvote_id.className = "btn-floating waves-effect waves-light green";
+          		downvote_id.className = "btn-floating waves-effect waves-light red lighten-4";
+          	}
+          	else{
+          		upvote_id.className = "btn-floating waves-effect waves-light green lighten-4";
+          	}
+          	vote_id.innerHTML = data.votes;
           }
         )
 	}
 	function downvote(id){
+		var vote_id = document.getElementById("votes_" + id);
+		var upvote_id = document.getElementById("upvote_" + id);
+		var downvote_id = document.getElementById("downvote_" + id);
+
 		$.post(
           '/comments/downvote.json',
           {
@@ -84,8 +98,15 @@
 	          	id: id
 	        }
           },
-          function(){
-          	window.location.reload();
+          function(data){
+          	if(data.status){
+          		upvote_id.className = "btn-floating waves-effect waves-light green lighten-4";
+          		downvote_id.className = "btn-floating waves-effect waves-light red";
+          	}
+          	else{
+          		downvote_id.className = "btn-floating waves-effect waves-light red lighten-4";
+          	}
+          	vote_id.innerHTML = data.votes;
           }
         )
 	}
