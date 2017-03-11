@@ -12,8 +12,8 @@ class User < ApplicationRecord
 	validates :email, presence: true, uniqueness: { case_sensitive: false }
 	validates_format_of :email, :with => /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Invalid e-mail format"
 	validates :display_name, presence: true, length: { maximum: 8 }
-	validates :password, presence: true, length: { minimum: 8 }
-	validates :password_confirmation, presence: true, length: { minimum: 8 }
+	validates :password, presence: true, length: { minimum: 8 }, on: :create
+	validates :password_confirmation, presence: true, length: { minimum: 8 }, on: :create
 
 	has_secure_password
 

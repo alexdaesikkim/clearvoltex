@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308212733) do
+ActiveRecord::Schema.define(version: 20170311083004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,12 @@ ActiveRecord::Schema.define(version: 20170308212733) do
     t.string   "song_name"
   end
 
+  create_table "feedbcaks", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "replies", force: :cascade do |t|
     t.integer  "parent_comment_id"
     t.integer  "child_comment_id"
@@ -51,10 +57,12 @@ ActiveRecord::Schema.define(version: 20170308212733) do
     t.string   "display_name"
     t.string   "email"
     t.string   "role"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "remember_digest"
     t.integer  "rating",          default: 0
+    t.boolean  "active",          default: false
+    t.boolean  "ban",             default: false
   end
 
   create_table "userstats", force: :cascade do |t|

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete	'/comments/delete' => 'comments#destroy'
   post		'/comments/upvote' => 'comments#upvote'
   post		'/comments/downvote' => 'comments#downvote'
+  post    '/comments/report' => 'comments#report'
 
   post		'/userstats/update_clear' => 'userstats#update_clearstats'
   post		'/userstats/update_score' => 'userstats#update_scorestats'

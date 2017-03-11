@@ -97,9 +97,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in(@user)
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, json: @user.flash, success: 'Welcome to ClearVoltex!'}
+        flash[:success] = "You will receive an email once accepted into beta"
+        format.html { redirect_to '/' }
       else
         format.html { render :new }
         format.json { render json: @user.flash, status: :unprocessable_entity }
@@ -131,6 +130,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def admin
+    @user = current_user
+    if current_user.role != "admin"
+        redirect_to @user
+    end
+    @unapproved_users = User.where("active = false AND role = ?", "regular")
+  end
+
+  def activate
+    @user_update = User.find(params[:user][:id])
+    @user_update.active = true
+    @user_update.save
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -139,6 +152,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :display_name, :email)
+      params.require(:user).permit(:id, :username, :password, :password_confirmation, :display_name, :email)
     end
 end

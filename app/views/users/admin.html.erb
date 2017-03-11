@@ -1,0 +1,42 @@
+<center><h3>Admin Panel</h3></center>
+
+<div class="container">
+	<table>
+	    <thead>
+			<tr>
+				<th data-field="username">Username</th>
+				<th data-field="name">Name</th>
+				<th data-field="email">Email</th>
+				<th data-field="activate"></th>
+			</tr>
+	    </thead>
+
+	    <tbody>
+			<% @unapproved_users.each do |unapproved_user| %>
+				<tr>
+				   <td><%= unapproved_user.username %></td>
+			       <td><%= unapproved_user.display_name %></td>
+			       <td><%= unapproved_user.email %></td>
+			       <td><a class="waves-effect waves-light btn green" onclick="activate(<%= unapproved_user.id %>, this)">Activate</a></td>
+			    </tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<%= javascript_tag do %>
+	function activate(user_id, row){
+		window.alert(user_id);
+	    $.post(
+	      '/users/activate.json',
+	      { user:
+	        {
+	          id: user_id
+	        }
+	      },
+	      function(){
+	      	window.alert("Activated user with id: "+user_id);
+	        row.closest('tr').remove();
+	      }
+	    )
+	}
+<% end %>
