@@ -79,13 +79,19 @@
     ];
 
     function change_status(button){
+      var button_class_name = button.className;
+      var all_buttons = document.getElementsByClassName(button_class_name);
       if(tag == 0){
+        for(var x = 0; x < all_buttons.length; x++){
+          all_buttons[x].text = "Score";
+        }
         tag = 1;
-        button.text = "Score";
       }
       else{
+        for(var x = 0; x < all_buttons.length; x++){
+          all_buttons[x].text = "Clear";
+        }
         tag = 0;
-        button.text = "Clear";
       }
     }
 
