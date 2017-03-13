@@ -142,6 +142,8 @@ class UsersController < ApplicationController
     @user_update = User.find(params[:user][:id])
     @user_update.active = true
     @user_update.save
+    ClearvoltexMailer.manual_activation(@user_update).deliver
+    flash[:success] = 'Mail has been sent!'
   end
 
   private
