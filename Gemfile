@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'simple_form'
 gem 'chartkick'
-gem 'acts_as_votable', '~> 0.10.0'
+gem 'mailjet'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
