@@ -110,4 +110,29 @@
           }
         )
 	}
+	function report(id){
+		$.post(
+		'/comments/report.json',
+			{
+				user_id: <%= current_user.id %>,
+	          	difficulty_id: <%= @difficulty.id %>,
+	          	id: id
+			},
+			function(data){
+				if(data.status){
+
+				}
+				else{
+
+				}
+			}
+		)
+	}
+	function delete(id){
+		$.ajax({
+			url: '/comments/delete.json?' + $.param({"id" : id}),
+			type: 'DELETE'
+			success: location.reload();
+		})
+	}
 <% end %>

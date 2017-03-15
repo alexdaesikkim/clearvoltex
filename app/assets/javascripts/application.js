@@ -16,6 +16,15 @@
 //= require_tree .
 //= require Chart.bundle
 //= require chartkick
+$(document).ready(function(){
+	$('.button-collapse').sideNav({
+      menuWidth: 300, // Default is 300
+      edge: 'left', // Choose the horizontal origin
+      closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      draggable: true // Choose whether you can drag to open on touch screens
+    }
+  );
+})
 
 $(window).on('load', function(){
 	$(".preloader-wrapper").delay(500).fadeOut("slow");
@@ -25,8 +34,7 @@ $(window).on('load', function(){
 		$('.toc-wrapper').pushpin({top: $('.toc-wrapper').offset().top,
 								   bottom: $('.toc-wrapper').offset().bottom,
 								   offset: 100});
-		$('.scrollspy').scrollSpy();
-		$('.button-collapse').sideNav();	
+		$('.scrollspy').scrollSpy();	
 	},1501);
  });
 

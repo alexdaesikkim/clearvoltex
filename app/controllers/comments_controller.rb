@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
 	end
 
 	def upvote
-    @comment = Comment.find(params[:comment][:id])
+    	@comment = Comment.find(params[:comment][:id])
 		@user_vote = Vote.where("user_id = ? AND comment_id = ?", params[:comment][:user_id], params[:comment][:id]).first
 		if @user_vote.nil?
 			@user_vote = Vote.new
@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
 	end
 
 	def downvote
-    @comment = Comment.find(params[:comment][:id])
+    	@comment = Comment.find(params[:comment][:id])
 		@user_vote = Vote.where("user_id = ? AND comment_id = ?", params[:comment][:user_id], params[:comment][:id]).first
 		if @user_vote.nil?
 			@user_vote = Vote.new
@@ -84,6 +84,14 @@ class CommentsController < ApplicationController
         end
 			end
 		end
+	end
+
+	def destroy
+		@comment.destroy
+	    respond_to do |format|
+	      format.html { redirect_to difficulties_url, notice: 'Difficulty was successfully destroyed.' }
+	      format.json { head :no_content }
+	    end
 	end
 
 private

@@ -25,7 +25,6 @@
 </div>
 <%= javascript_tag do %>
 	function activate(user_id, row){
-		window.alert(user_id);
 	    $.post(
 	      '/users/activate.json',
 	      { user:
