@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Level</th>
+      <th>First song</th>
+      <th>Second song</th>
+      <th>Integer</th>
+      <th>Third song</th>
+      <th>Integer</th>
+      <th>Photo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dans.each do |dan| %>
+      <tr>
+        <td><%= dan.name %></td>
+        <td><%= dan.level %></td>
+        <td><%= dan.first_song_id %></td>
+        <td><%= dan.second_song_id %></td>
+        <td><%= dan.integer %></td>
+        <td><%= dan.third_song_id %></td>
+        <td><%= dan.integer %></td>
+        <td><%= dan.photo %></td>
+        <td><%= link_to 'Show', dan %></td>
+        <td><%= link_to 'Edit', edit_dan_path(dan) %></td>
+        <td><%= link_to 'Destroy', dan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dan', new_dan_path %>

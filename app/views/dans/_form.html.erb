@@ -1,0 +1,18 @@
+<%= simple_form_for(@dan) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :level %>
+    <%= f.input :first_song_id %>
+    <%= f.input :second_song_id %>
+    <%= f.input :integer %>
+    <%= f.input :third_song_id %>
+    <%= f.input :integer %>
+    <%= f.input :photo %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

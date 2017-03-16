@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :dans
   resources :users
 
   post		'/comments/create' => 'comments#create'

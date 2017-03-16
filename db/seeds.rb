@@ -21,6 +21,7 @@ require 'csv'
 
 diff_text = File.read(Rails.root.join('lib', 'seeds', 'sdvx_diffs.csv'))
 diffs = CSV.parse(diff_text, :headers => true, :encoding => 'UTF-8')
+puts "Saving difficulties"
 diffs.each do |row|
 	d = Difficulty.find_or_initialize_by(id: row['id'])
 	d.song_id = row['song_id']
@@ -34,6 +35,5 @@ diffs.each do |row|
 	d.tier = row['tier']
 	d.photo = row['photo']
 	d.save
-	puts "Song #{d.song_name} - #{d.difficulty_name.upcase} #{d.level} has been saved"
 end
 puts "\nThere are #{Difficulty.count} difficulties"
