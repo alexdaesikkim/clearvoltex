@@ -40,6 +40,14 @@ gem 'mailjet'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :test do
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+  gem 'single_test'
+  gem 'test-unit'
+  gem 'simplecov'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
