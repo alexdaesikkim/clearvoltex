@@ -1,5 +1,5 @@
 class Difficulty < ApplicationRecord
-	belongs_to :song
+	belongs_to :dan
 	has_many :userstats
 	has_many :comments
 

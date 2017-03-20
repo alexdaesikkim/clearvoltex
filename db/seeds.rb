@@ -36,4 +36,25 @@ diffs.each do |row|
 	d.photo = row['photo']
 	d.save
 end
+
 puts "\nThere are #{Difficulty.count} difficulties"
+
+dan_text = File.read(Rails.root.join('lib', 'seeds', 'dan_courses.csv'))
+dans = CSV.parse(dan_text, :headers => true, :encoding => 'UTF-8')
+dans.each do |row|
+	d = Dan.find_or_initialize_by(id: row['id'])
+	d.name = row['name']
+	d.level = row['level']
+	d.first_song_id = row['song_id_1']
+	song1 = Difficulty.find_or_initialize_by(id: d.first_song_id)
+	d.second_song_id = row['song_id_2']
+	song2 = Difficulty.find_or_initialize_by(id: d.second_song_id)
+	d.third_song_id = row['song_id_3']
+	song3 = Difficulty.find_or_initialize_by(id: d.third_song_id)
+	d.photo = row['photo']
+	date = row['date']
+	d.release_date = Date.strptime(date, '%m/%d/%Y')
+	d.save
+end
+
+puts "\nDans have been added, there are #{Dan.count} dans."

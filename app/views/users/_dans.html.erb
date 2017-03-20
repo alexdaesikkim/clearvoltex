@@ -1,0 +1,29 @@
+<center><h3>Skill Analyzer</h3></center>
+<% dans.each do |dan_level| %>
+	<% if dan_level.exists? %>
+	<div id = <%= "dan_#{dan_level.first.first.level}" %> class="section scrollspy">
+		<h3>
+			<% if dan_level.first.first.level == 12 %>
+				SKILL ANALYZER LEVEL.∞
+			<% elsif dan_level.first.first.level == 13 %>
+				KAC Courses
+			<% else %>
+				<%= "SKILL ANALYZER LEVEL.#{dan_level.first.first.level}" %>
+			<% end %>
+		</h3>
+		<div class="section">
+			<% dan_level.each do |dan_courses| %>
+				<h4>
+					<%= "#{dan_courses.release_date}" %>
+				</h4>
+				<% dan_coursess.each do |dan| %>
+					<span class="dan_course">
+						<img src = <%= asset_url "song#{dan.first_song.photo}" %> />
+						<img src = <%= asset_url "song#{dan.second_song.photo}" %> />
+						<img src = <%= asset_url "song#{dan.third_song.photo}" %> />
+					</span>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+<% end %>

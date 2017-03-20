@@ -11,6 +11,34 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @dans_default = [
+      [
+        Dan.where("level = 7 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 7 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+      ],
+      [
+        Dan.where("level = 8 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 8 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+      ],
+      [
+        Dan.where("level = 9 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 9 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+      ],
+      [
+        Dan.where("level = 10 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 10 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+      ],
+      [
+        Dan.where("level = 11 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+      ],
+      [
+        Dan.where("level = 12 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+      ],
+      [
+        Dan.where("level = 13 AND date = ?", Date.new(2016,12,28)).order("name ASC")
+      ]
+    ]
+
     @level_15 = [
       Difficulty.where("level = 15 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
       Difficulty.where("level = 15 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),

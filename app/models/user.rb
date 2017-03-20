@@ -6,6 +6,7 @@ class User < ApplicationRecord
 	has_many :userstats
 	has_many :comments
 	has_many :votes
+	has_many :dan_stats
 
 	validates :username, presence: true, length: { in: 6..20 },
 						 uniqueness: { case_sensitive: false }
