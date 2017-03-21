@@ -2,6 +2,7 @@ class Difficulty < ApplicationRecord
 	belongs_to :dan
 	has_many :userstats
 	has_many :comments
+	has_many :dandifficulties
 
 	def user_score(id)
 		userstat = self.userstats.where(:user_id => id)

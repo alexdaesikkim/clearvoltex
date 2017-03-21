@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dan_id: 1
+  difficulty_id: 1
+
+two:
+  dan_id: 1
+  difficulty_id: 1

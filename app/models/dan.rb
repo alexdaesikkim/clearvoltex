@@ -1,6 +1,6 @@
 class Dan < ApplicationRecord
 	has_many :dan_stats
-	has_many :difficulties
+	has_many :dandifficulties
 
 	def user_score(id)
 		userstat = self.dan_stats.where(:user_id => id)

@@ -41,11 +41,12 @@ gem 'mailjet'
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  gem 'shoulda'
+  gem 'shoulda-context'
   gem 'shoulda-matchers'
   gem 'single_test'
   gem 'test-unit'
   gem 'simplecov'
+  gem 'factory_girl_rails'
 end
 
 group :development, :test do
