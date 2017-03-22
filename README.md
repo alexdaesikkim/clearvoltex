@@ -1,6 +1,8 @@
 # ClearVoltex
 
-SDVX clear and score management web application, using Ruby on Rails. https://www.clearvoltex.net/
+## https://www.clearvoltex.net/
+
+SDVX clear and score management web application, using Ruby on Rails.
 It's currently deployed online as closed beta, and requires approval for usage.
 
 ## What is ClearVoltex
