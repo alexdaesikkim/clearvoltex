@@ -1,18 +1,18 @@
-## ClearVoltex
+# ClearVoltex
 
 SDVX clear and score management web application, using Ruby on Rails. https://www.clearvoltex.net/
 It's currently deployed online as closed beta, and requires approval for usage.
 
-# What is ClearVoltex
+## What is ClearVoltex
 
 ClearVoltex is a web application that keeps track of user's stats for the arcade game, SDVX. Currently, it tracks clears and scores, as well as discussions for each song among the users.
 
 ClearVoltex was inspired by http://sdvx-level.github.io which was used by many SDVX players back in 2014, but have become obsolete since release of SDVX 3.
 
 
-# Current Version: 0.2.0
+## Current Version: 0.2.0
 
-# Version history:
+## Version history:
 
 0.2.0 (Current Version)
 
