@@ -12,6 +12,7 @@
           <li class="tab"><a href="#tab-3">Level 17</a></li>
           <li class="tab"><a href="#tab-4">Level 18</a></li>
           <li class="tab"><a href="#tab-5">Level 19 - 20</a></li>
+          <li class="tab"><a href="#tab-6">SKILL ANALYZER</a></li>
         </ul>
       </div>
     </div>
@@ -55,6 +56,13 @@
         </div>
         <div class = "col hide-on-small-only m1">
           <%= render 'scrollspylast', tier19: @level_19, level19: 19, tier20: @level_20, level20: 20 %>
+        </div>
+      </div>
+      <div id="tab-6">
+        <div class="col s12 m10 offset-m1">
+          <%= render 'dans', dans: @dans_default %>
+        </div>
+        <div class = "col hide-on-small-only m1">
         </div>
       </div>
     </div>

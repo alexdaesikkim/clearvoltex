@@ -13,29 +13,29 @@ class UsersController < ApplicationController
   def show
     @dans_default = [
       [
-        Dan.where("level = 7 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 7 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("level = 7 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 7 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 8 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 8 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("level = 8 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 8 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 9 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 9 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("level = 9 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 9 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 10 AND date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 10 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("level = 10 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("level = 10 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 11 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("level = 11 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 12 AND date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("level = 12 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 13 AND date = ?", Date.new(2016,12,28)).order("name ASC")
+        Dan.where("level = 13 AND release_date = ?", Date.new(2016,12,28)).order("name ASC")
       ]
     ]
 
