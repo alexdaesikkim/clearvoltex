@@ -23,30 +23,11 @@ class Dan < ApplicationRecord
 	def song(num)
 		case num
 			when 2
-				self.difficulties.where(:id => second_song_id)
+				return Difficulty.where(:id => second_song_id).first.photo
 			when 3
-				self.difficulties.where(:id => third_song_id)
+				return Difficulty.where(:id => third_song_id).first.photo
 			else
-				self.difficulties.where(:id => first_song_id)
+				return Difficulty.where(:id => first_song_id).first.photo
 		end
-	end
-
-	def tag_to_string
-		case self.difficulty_name
-	        when "2"
-	        	return "ADVANCE"
-	        when "3"
-	        	return "EXHAUST"
-	        when "4"
-	        	return "MAXIMUM"
-	        when "5"
-	        	return "INFINITE"
-	        when "6"
-	        	return "GRAVITY"
-	        when "7"
-	        	return "HEAVENLY"
-	        else
-	        	return "NOVICE"
-	    end
 	end
 end

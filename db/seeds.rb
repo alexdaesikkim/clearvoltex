@@ -46,14 +46,20 @@ dans.each do |row|
 	d.name = row['name']
 	d.level = row['level']
 	d.first_song_id = row['song_id_1']
-	song1 = Difficulty.find_or_initialize_by(id: d.first_song_id)
 	d.second_song_id = row['song_id_2']
-	song2 = Difficulty.find_or_initialize_by(id: d.second_song_id)
 	d.third_song_id = row['song_id_3']
-	song3 = Difficulty.find_or_initialize_by(id: d.third_song_id)
 	d.photo = row['photo']
 	date = row['date']
 	d.release_date = Date.strptime(date, '%m/%d/%Y')
+	first = Dandifficulty.find_or_initialize_by(difficulty_id: d.first_song_id)
+	first.dan_id = d.id
+	second = Dandifficulty.find_or_initialize_by(difficulty_id: d.second_song_id)
+	second.dan_id = d.id
+	third = Dandifficulty.find_or_initialize_by(difficulty_id: d.third_song_id)
+	third.dan_id = d.id
+	first.save
+	second.save
+	third.save
 	d.save
 end
 

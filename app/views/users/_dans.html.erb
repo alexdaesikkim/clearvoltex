@@ -1,6 +1,5 @@
 <center><h3>Skill Analyzer</h3></center>
 <% dans.each do |dan_level| %>
-	<% if dan_level.exists? %>
 	<div id = <%= "dan_#{dan_level.first.first.level}" %> class="section scrollspy">
 		<h3>
 			<% if dan_level.first.first.level == 12 %>
@@ -11,17 +10,22 @@
 				<%= "SKILL ANALYZER LEVEL.#{dan_level.first.first.level}" %>
 			<% end %>
 		</h3>
+		<div class="divider"></div>
 		<div class="section">
 			<% dan_level.each do |dan_courses| %>
 				<h4>
-					<%= "#{dan_courses.release_date}" %>
+					<%= "#{dan_courses.first.release_date}" %>
 				</h4>
-				<% dan_coursess.each do |dan| %>
-					<span class="dan_course">
-						<img src = <%= asset_url "song#{dan.first_song.photo}" %> />
-						<img src = <%= asset_url "song#{dan.second_song.photo}" %> />
-						<img src = <%= asset_url "song#{dan.third_song.photo}" %> />
-					</span>
+				<br>
+				<% dan_courses.each do |dan| %>
+					<div>
+						<h5><%= "#{dan.name}" %></h5>
+						<div class="dan_parent">
+							<img src = <%= asset_url "song#{dan.song(1)}" %> class = "dan_song" />
+							<img src = <%= asset_url "song#{dan.song(2)}" %> class = "dan_song" />
+							<img src = <%= asset_url "song#{dan.song(3)}" %> class = "dan_song" />
+						</div>
+					</div>
 				<% end %>
 			<% end %>
 		</div>
