@@ -1,16 +1,27 @@
 ##ClearVoltex
 
-#Created by Alex Kim
+www.clearvoltex.net
 
-http://sdvx-level.github.io/ haven't been updated since release of SDVX 2, so I decided to make my own version of the app using Ruby on Rails. For now, this is documentation for personal work only, and will update to show relevant changes within the application. May go open source once things really start picking up.
+#What is ClearVoltex?
 
-Note to self: This page is to serve as personal notes + some things that may be posted in public README.md. Please change README.md once repo becomes public.
+ClearVoltex is an web application for users to track their clear and score tags for the game Sound Voltex, an arcade game developed by Konami.
 
-#Current Version: 0.1.0
+#Why create such tool?
+
+Back in SDVX II, there was http://sdvx-level.github.io/ which allowed users to keep track of their clears without any payment. This application has not been updated for past 4 years, so I decided to personally develop a web application that uses the ideas from original application, plus adding more features.
+
+
+#Current Version: 0.2.0
 
 #Version history:
 
-0.1.0 (Current Version)
+0.2.0 (Current Version)
+
+*Comments are enabled for each page
+	- Report function not working yet
+	- Minor bug fixes to the page
+
+0.1.0
 
 * Actual data seeded for levels 15 through 20
 
