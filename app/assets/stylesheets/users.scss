@@ -83,3 +83,67 @@
 	top: 137px;
 	left: 13px;
 } 
+
+.dan_not_played {
+	display: inline-block;
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid;
+	filter: grayscale(100%);
+}
+
+.dan_failed {
+	display: inline-block;
+	height: 175px;
+	width: auto;
+ 	position: relative;
+    top: 0;
+	left: 0;
+	border:9px solid #808080;
+	filter: grayscale(50%);
+}
+
+.dan_cleared {
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #00cc00;
+}
+
+
+.dan_UC {
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #ff3399;
+}
+
+.dan_PUC {
+	height: 175px;
+	width: auto;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #ffff00;
+}
+
+.dan_parent {
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	border:9px solid #ffff00
+}
+
+.dan_song {
+	height: 175px;
+	width: auto;
+	position: relative;
+}

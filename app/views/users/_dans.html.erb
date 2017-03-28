@@ -20,11 +20,11 @@
 				<% dan_courses.each do |dan| %>
 					<div>
 						<h5><%= "#{dan.name}" %></h5>
-						<span class="dan_course_#{dan.id}">
-							<img src = <%= asset_url "song#{dan.song(1)}" %> />
-							<img src = <%= asset_url "song#{dan.song(2)}" %> />
-							<img src = <%= asset_url "song#{dan.song(3)}" %> />
-						</span>
+						<div class="dan_parent">
+							<img src = <%= asset_url "song#{dan.song(1)}" %> class = "dan_song" />
+							<img src = <%= asset_url "song#{dan.song(2)}" %> class = "dan_song" />
+							<img src = <%= asset_url "song#{dan.song(3)}" %> class = "dan_song" />
+						</div>
 					</div>
 				<% end %>
 			<% end %>
