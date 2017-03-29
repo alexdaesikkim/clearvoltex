@@ -17,14 +17,14 @@
 					<%= "#{dan_courses.first.release_date}" %>
 				</h4>
 				<br>
-					<% dan_courses.each do |dan| %>
-						<span class = "dan_parent">
-							<h5><%= "#{dan.name}" %></h5>
-								<div class ="dan_PUC">
-									<img src = <%= asset_url "song#{dan.song(1)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(2)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(3)}" %> class = "dan_song" />
-								</div>
-						</span>
-					<% end %>		
+				<% dan_courses.each do |dan| %>
+					<span class = "dan_parent">
+						<h5><%= "#{dan.name}" %></h5>
+							<div class = <%= dan.user_clear(@user.id) %> onclick= "dan_update(this, <%= dan.id %>)">
+								<img src = <%= asset_url "song#{dan.song(1)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(2)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(3)}" %> class = "dan_song" />
+							</div>
+					</span>
+				<% end %>		
 			<% end %>
 		</div>
 	</div>

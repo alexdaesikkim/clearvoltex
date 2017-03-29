@@ -136,17 +136,17 @@
       }
     }
 
-    function dan_update(){
+    function dan_update(dan, current_id){
       if(tag == 0){
         $.post(
           '/danstats/update_clear.json',
-          { userstat:
+          { danstat:
             {
-              user_id: <%= @user.id %>, difficulty_id: current_id
+              user_id: <%= @user.id %>, dan_id: current_id
             }
           },
           function(data){
-            diff.getElementsByTagName('img')[0].className = data.clear;
+            dan.className = data.clear;
           }
         )
       }

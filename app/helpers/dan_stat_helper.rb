@@ -1,0 +1,2 @@
+module DanStatHelper
+end

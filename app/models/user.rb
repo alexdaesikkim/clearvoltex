@@ -57,4 +57,13 @@ class User < ApplicationRecord
       return false if role.nil?
       role.downcase.to_sym == authorized_role
     end
+
+    def update_dan
+    	highest_dan = self.dan_stats.where("clear != ? AND clear != ?", "dan_not_played", "dan_failed").joins(:dan).where("level <= 12").order("level DESC").first
+    	if(highest_dan.nil?)
+    		update_attribute(:dan, 0)
+    	else
+    		update_attribute(:dan, highest_dan.dan.level)
+    	end
+    end
 end

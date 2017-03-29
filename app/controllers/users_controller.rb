@@ -13,97 +13,97 @@ class UsersController < ApplicationController
   def show
     @dans_default = [
       [
-        Dan.where("level = 7 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 7 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 7 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("active = true AND level = 7 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 8 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 8 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 8 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("active = true AND level = 8 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 9 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 9 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 9 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("active = true AND level = 9 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 10 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("level = 10 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 10 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
+        Dan.where("active = true AND level = 10 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 11 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 11 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 12 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 12 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
       ],
       [
-        Dan.where("level = 13 AND release_date = ?", Date.new(2016,12,28)).order("name ASC")
+        Dan.where("active = true AND level = 13 AND release_date = ?", Date.new(2016,12,28)).order("name ASC")
       ]
     ]
 
     @level_15 = [
-      Difficulty.where("level = 15 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 15 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 15 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
     @level_16 = [
-      Difficulty.where("level = 16 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 16 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 16 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
     @level_17 = [
-      Difficulty.where("level = 17 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 17 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 17 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
     @level_18 = [
-      Difficulty.where("level = 18 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 18 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 18 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
     @level_19 = [
-      Difficulty.where("level = 19 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 19 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 19 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
     @level_20 = [
-      Difficulty.where("level = 20 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
-      Difficulty.where("level = 20 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "S").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "A").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "B").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "C").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "D").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "E").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "F").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "P").order("difficulty_name ASC, song_name ASC"),
+      Difficulty.where("active = true AND level = 20 AND tier = ?", "N").order("difficulty_name ASC, song_name ASC")
     ]
   end
 

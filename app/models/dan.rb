@@ -7,7 +7,7 @@ class Dan < ApplicationRecord
 		if userstat.exists? && (!userstat.first.score.nil?)
 			return userstat.first.score
 		else
-			return "not_played"
+			return "dan_not_played"
 		end
 	end
 
@@ -16,7 +16,7 @@ class Dan < ApplicationRecord
 		if userstat.exists?
 			return userstat.first.clear
 		else
-			return "not_played"
+			return "dan_not_played"
 		end
 	end
 

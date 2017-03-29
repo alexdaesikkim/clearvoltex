@@ -51,15 +51,17 @@ dans.each do |row|
 	d.photo = row['photo']
 	date = row['date']
 	d.release_date = Date.strptime(date, '%m/%d/%Y')
-	first = Dandifficulty.find_or_initialize_by(difficulty_id: d.first_song_id)
-	first.dan_id = d.id
-	second = Dandifficulty.find_or_initialize_by(difficulty_id: d.second_song_id)
-	second.dan_id = d.id
-	third = Dandifficulty.find_or_initialize_by(difficulty_id: d.third_song_id)
-	third.dan_id = d.id
+	first = Dandifficulty.find_or_initialize_by(difficulty_id: d.first_song_id, dan_id: d.id)
+	second = Dandifficulty.find_or_initialize_by(difficulty_id: d.second_song_id, dan_id: d.id)
+	third = Dandifficulty.find_or_initialize_by(difficulty_id: d.third_song_id, dan_id: d.id)
 	first.save
 	second.save
 	third.save
+	if row['active'] = 1
+		d.active = true
+	else
+		d.active = false
+	end
 	d.save
 end
 

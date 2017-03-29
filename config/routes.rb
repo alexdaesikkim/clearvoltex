@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post		'/userstats/update_clear' => 'userstats#update_clearstats'
   post		'/userstats/update_score' => 'userstats#update_scorestats'
 
+  post    '/danstats/update_clear' => 'dan_stat#update_clearstats'
+  post    '/danstats/update_score' => 'dan_stat#update_scorestats'
+
   get    '/admin' => 'users#admin'
   post   '/users/activate' => 'users#activate'
 

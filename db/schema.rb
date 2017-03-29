@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321062536) do
+ActiveRecord::Schema.define(version: 20170329074625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20170321062536) do
     t.integer  "third_song_id"
     t.string   "photo"
     t.date     "release_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.boolean  "active",         default: true
   end
 
   create_table "difficulties", force: :cascade do |t|
@@ -60,11 +61,12 @@ ActiveRecord::Schema.define(version: 20170321062536) do
     t.string   "difficulty_name"
     t.integer  "level"
     t.string   "photo"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "tier"
     t.string   "effector"
     t.string   "song_name"
+    t.boolean  "active",          default: true
   end
 
   create_table "feedbcaks", force: :cascade do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 20170321062536) do
     t.integer  "rating",          default: 0
     t.boolean  "active",          default: false
     t.boolean  "ban",             default: false
+    t.integer  "dan",             default: 0
   end
 
   create_table "userstats", force: :cascade do |t|
