@@ -11,22 +11,20 @@
 			<% end %>
 		</h3>
 		<div class="divider"></div>
-		<div class="section">
+		<div class="section"> 
 			<% dan_level.each do |dan_courses| %>
 				<h4>
 					<%= "#{dan_courses.first.release_date}" %>
 				</h4>
 				<br>
-				<% dan_courses.each do |dan| %>
-					<div>
-						<h5><%= "#{dan.name}" %></h5>
-						<div class="dan_parent">
-							<img src = <%= asset_url "song#{dan.song(1)}" %> class = "dan_song" />
-							<img src = <%= asset_url "song#{dan.song(2)}" %> class = "dan_song" />
-							<img src = <%= asset_url "song#{dan.song(3)}" %> class = "dan_song" />
-						</div>
-					</div>
-				<% end %>
+					<% dan_courses.each do |dan| %>
+						<span class = "dan_parent">
+							<h5><%= "#{dan.name}" %></h5>
+								<div class ="dan_PUC">
+									<img src = <%= asset_url "song#{dan.song(1)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(2)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(3)}" %> class = "dan_song" />
+								</div>
+						</span>
+					<% end %>		
 			<% end %>
 		</div>
 	</div>

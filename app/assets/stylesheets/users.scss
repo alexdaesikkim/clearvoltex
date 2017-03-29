@@ -1,6 +1,8 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
 .not_played {
 	display: inline-block;
 	height: 175px;
@@ -62,6 +64,7 @@
 .parent {
 	display: inline-block;
 	position: relative;
+	height: 175px;
 	top: 0;
 	left: 0;
 }
@@ -85,9 +88,8 @@
 } 
 
 .dan_not_played {
-	display: inline-block;
-	height: 175px;
-	width: auto;
+	height: 168px;
+	width: 468px;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -96,9 +98,8 @@
 }
 
 .dan_failed {
-	display: inline-block;
-	height: 175px;
-	width: auto;
+	height: 168px;
+	width: 468px;
  	position: relative;
     top: 0;
 	left: 0;
@@ -107,8 +108,8 @@
 }
 
 .dan_cleared {
-	height: 175px;
-	width: auto;
+	height: 168px;
+	width: 468px;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -117,8 +118,8 @@
 
 
 .dan_UC {
-	height: 175px;
-	width: auto;
+	height: 168px;
+	width: 468px;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -126,8 +127,8 @@
 }
 
 .dan_PUC {
-	height: 175px;
-	width: auto;
+	height: 168px;
+	width: 468px;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -135,15 +136,14 @@
 }
 
 .dan_parent {
-	display: block;
+	display: inline-block;
 	position: relative;
 	top: 0;
 	left: 0;
-	border:9px solid #ffff00
 }
 
 .dan_song {
-	height: 175px;
+	height: 150px;
 	width: auto;
 	position: relative;
 }

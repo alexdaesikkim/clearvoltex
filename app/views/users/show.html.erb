@@ -12,7 +12,7 @@
           <li class="tab"><a href="#tab-3">Level 17</a></li>
           <li class="tab"><a href="#tab-4">Level 18</a></li>
           <li class="tab"><a href="#tab-5">Level 19 - 20</a></li>
-          <!--<li class="tab"><a href="#tab-6">SKILL ANALYZER</a></li>-->
+          <li class="tab"><a href="#tab-6">SKILL ANALYZER</a></li>
         </ul>
       </div>
     </div>
@@ -58,13 +58,13 @@
           <%= render 'scrollspylast', tier19: @level_19, level19: 19, tier20: @level_20, level20: 20 %>
         </div>
       </div>
-      <!--<div id="tab-6">
+      <div id="tab-6">
         <div class="col s12 m10 offset-m1">
           <%= render 'dans', dans: @dans_default %>
         </div>
         <div class = "col hide-on-small-only m1">
         </div>
-      </div>-->
+      </div>
     </div>
   </div>
 </div>
@@ -85,6 +85,10 @@
       "<%= asset_url "grades/AAAplus.png" %>",
       "<%= asset_url "grades/S.png" %>"
     ];
+
+    function fuckthis(){
+      return false;
+    }
 
     function change_status(button){
       var button_class_name = button.className;
@@ -120,9 +124,9 @@
       else{
         $.post(
           '/userstats/update_score.json',
-          { userstat:
+          { danstat:
             {
-              user_id: <%= @user.id %>, difficulty_id: current_id
+              user_id: <%= @user.id %>, dan_id: current_id
             }
           },
           function(data){
@@ -130,6 +134,35 @@
           }
         )
       }
+    }
+
+    function dan_update(){
+      if(tag == 0){
+        $.post(
+          '/danstats/update_clear.json',
+          { userstat:
+            {
+              user_id: <%= @user.id %>, difficulty_id: current_id
+            }
+          },
+          function(data){
+            diff.getElementsByTagName('img')[0].className = data.clear;
+          }
+        )
+      }
+      else{
+        $.post(
+          '/danstats/update_score.json',
+          { danstat:
+            {
+              user_id: <%= @user.id %>, dan_id: current_id
+            }
+          },
+          function(data){
+            diff.getElementsByTagName('img')[2].src = score_assets[str_to_int(data.score)];
+          }
+        )
+      }      
     }
 
     function str_to_int(grade){
@@ -147,5 +180,3 @@
     }
   <% end %>
 <% end %>
-<script>
-</script>
