@@ -7,7 +7,7 @@ class Dan < ApplicationRecord
 		if userstat.exists? && (!userstat.first.score.nil?)
 			return userstat.first.score
 		else
-			return "dan_not_played"
+			return "not_played"
 		end
 	end
 
@@ -23,11 +23,11 @@ class Dan < ApplicationRecord
 	def song(num)
 		case num
 			when 2
-				return Difficulty.where(:id => second_song_id).first.photo
+				return Difficulty.where(:id => second_song_id).first
 			when 3
-				return Difficulty.where(:id => third_song_id).first.photo
+				return Difficulty.where(:id => third_song_id).first
 			else
-				return Difficulty.where(:id => first_song_id).first.photo
+				return Difficulty.where(:id => first_song_id).first
 		end
 	end
 end

@@ -85,41 +85,52 @@
 	position: absolute;
 	top: 137px;
 	left: 13px;
+}
+
+.dan_song {
+	height: 157px;
+	width: auto;
+	position: relative;
 } 
 
 .dan_not_played {
-	height: 168px;
-	width: 468px;
+	height: 175px;
+	width: 489px;
 	position: relative;
 	top: 0;
 	left: 0;
 	border:9px solid;
+}
+
+.dan_not_played .dan_song {
 	filter: grayscale(100%);
 }
 
 .dan_failed {
-	height: 168px;
-	width: 468px;
+	height: 175px;
+	width: 489px;
  	position: relative;
     top: 0;
 	left: 0;
 	border:9px solid #808080;
+}
+
+.dan_failed .dan_song {
 	filter: grayscale(50%);
 }
 
 .dan_cleared {
-	height: 168px;
-	width: 468px;
+	height: 175px;
+	width: 489px;
 	position: relative;
 	top: 0;
 	left: 0;
 	border:9px solid #00cc00;
 }
 
-
 .dan_UC {
-	height: 168px;
-	width: 468px;
+	height: 175px;
+	width: 489px;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -127,8 +138,8 @@
 }
 
 .dan_PUC {
-	height: 168px;
-	width: 468px;
+	height: 175px;
+	width: 489px;
 	position: relative;
 	top: 0;
 	left: 0;
@@ -142,8 +153,40 @@
 	left: 0;
 }
 
-.dan_song {
-	height: 150px;
-	width: auto;
-	position: relative;
+.dan_difficulty_1_tag{
+	-webkit-filter: drop-shadow(2px 2px 2px #222);
+    filter: drop-shadow(2px 2px 2px #222);
+	width: 45px;
+	height: auto;
+	position: absolute;
+	top: 131px;
+	left: 106px;
+}
+
+.dan_difficulty_2_tag{
+	-webkit-filter: drop-shadow(2px 2px 2px #222);
+    filter: drop-shadow(2px 2px 2px #222);
+	width: 45px;
+	height: auto;
+	position: absolute;
+	top: 131px;
+	left: 263px;
+}
+
+.dan_difficulty_3_tag{
+	-webkit-filter: drop-shadow(2px 2px 2px #222);
+    filter: drop-shadow(2px 2px 2px #222);
+	width: 45px;
+	height: auto;
+	position: absolute;
+	top: 131px;
+	left: 420px;
+}
+
+.dan_score_tag{
+	-webkit-filter: drop-shadow(2px 2px 2px #222);
+    filter: drop-shadow(2px 2px 2px #222);
+	position: absolute;
+	top: 128px;
+	left: 4px;
 }

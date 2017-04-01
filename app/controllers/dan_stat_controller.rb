@@ -18,13 +18,12 @@ class DanStatController < ApplicationController
         else
           x = 0 
       end
-      puts(x)
       @danstat.clear = clears[x]
       @danstat.save
     else
       @danstat = DanStat.new(danstat_params)
       @danstat.clear = "dan_failed"
-      @danstat.score = "dan_not_played"
+      @danstat.score = "not_played"
       @danstat.save
     end
     @user.update_dan
@@ -34,7 +33,7 @@ class DanStatController < ApplicationController
   end
 
   def update_scorestats
-    @danstat = DanStat.where(:user_id=>params[:danstat][:user_id]).where(:difficulty_id=>params[:danstat][:dan_id]).first
+    @danstat = DanStat.where(:user_id=>params[:danstat][:user_id]).where(:dan_id=>params[:danstat][:dan_id]).first
     @user = User.find(params[:danstat][:user_id])
     if(!@danstat.nil?)
       scores = ["not_played", "D", "C", "B", "A", "Aplus", "AA", "AAplus", "AAA", "AAAplus", "S"]

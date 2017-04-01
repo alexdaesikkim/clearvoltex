@@ -5,7 +5,7 @@
 			<% if dan_level.first.first.level == 12 %>
 				SKILL ANALYZER LEVEL.∞
 			<% elsif dan_level.first.first.level == 13 %>
-				KAC Courses
+				KAC 2016 Course
 			<% else %>
 				<%= "SKILL ANALYZER LEVEL.#{dan_level.first.first.level}" %>
 			<% end %>
@@ -21,7 +21,11 @@
 					<span class = "dan_parent">
 						<h5><%= "#{dan.name}" %></h5>
 							<div class = <%= dan.user_clear(@user.id) %> onclick= "dan_update(this, <%= dan.id %>)">
-								<img src = <%= asset_url "song#{dan.song(1)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(2)}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(3)}" %> class = "dan_song" />
+								<img src = <%= asset_url "song#{dan.song(1).photo}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(2).photo}" %> class = "dan_song" /><img src = <%= asset_url "song#{dan.song(3).photo}" %> class = "dan_song" />
+								<a href= <%= "/difficulty/#{dan.song(1).id}" %>><img class="dan_difficulty_1_tag" src = <%= asset_url "difficulty/#{dan.song(1).difficulty_name}.png" %> /></a>
+								<a href= <%= "/difficulty/#{dan.song(2).id}" %>><img class="dan_difficulty_2_tag" src = <%= asset_url "difficulty/#{dan.song(2).difficulty_name}.png" %> /></a>
+								<a href= <%= "/difficulty/#{dan.song(3).id}" %>><img class="dan_difficulty_3_tag" src = <%= asset_url "difficulty/#{dan.song(3).difficulty_name}.png" %> /></a>
+								<img class="dan_score_tag" src = <%= asset_url "grades/#{dan.user_score(@user.id)}.png" %> />
 							</div>
 					</span>
 				<% end %>		

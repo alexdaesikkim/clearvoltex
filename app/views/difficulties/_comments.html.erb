@@ -1,10 +1,7 @@
 <div class="row">
-	<div class="col s12 m8 l6 offset-m2 offset-l3">
-	<h5>User Comments</h5>
-	</div>
 	<% comments.each do |comment| %>
 		<div class="col s12 m8 l6 offset-m2 offset-l3">
-			<%= comment.user.display_name %> says:
+			<%= comment.user.display_name %>:
 			<br>
 			<%= comment.content %>
 			<br>
@@ -27,7 +24,7 @@
 					"btn-floating waves-effect waves-light red lighten-4"
 				<% end %>
 			   onclick="downvote(<%= comment.id %>)"><i class="material-icons">keyboard_arrow_down</i></a>
-			<a id = <%= "warning_#{comment.id}" %> class="btn-floating waves-effect waves-light yellow"><i class="material-icons">warning</i></a>			
+			<!--<a id = <%= "warning_#{comment.id}" %> class="btn-floating waves-effect waves-light yellow"><i class="material-icons">warning</i></a>-->			
 		</div>
 	<% end %>
 </div>

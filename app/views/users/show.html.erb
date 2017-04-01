@@ -63,6 +63,7 @@
           <%= render 'dans', dans: @dans_default %>
         </div>
         <div class = "col hide-on-small-only m1">
+          <%= render 'scrollspydan', dans: @dans_default %>
         </div>
       </div>
     </div>
@@ -159,7 +160,7 @@
             }
           },
           function(data){
-            diff.getElementsByTagName('img')[2].src = score_assets[str_to_int(data.score)];
+            window.alert("pressed update score");
           }
         )
       }      
