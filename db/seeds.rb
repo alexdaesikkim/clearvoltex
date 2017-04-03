@@ -34,6 +34,12 @@ diffs.each do |row|
 	d.level = row['level']
 	d.tier = row['tier']
 	d.photo = row['photo']
+	if row['active'] == "1"
+		d.active = true
+	else
+		puts "\nWARNING: THE SONG #{d.song_name} #{d.difficulty_name} IS NOT ACTIVE"
+		d.active = false
+	end
 	d.save
 end
 
@@ -57,7 +63,7 @@ dans.each do |row|
 	first.save
 	second.save
 	third.save
-	if row['active'] = 1
+	if row['active'] == "1"
 		d.active = true
 	else
 		d.active = false
