@@ -15,11 +15,17 @@ class Ability
             current_user.id == user.id
         end
 
+        can :read, Difficulty
         can :read, User
 
         can :manage, Userstat do |userstat|
             user_userstats = user.userstats.map(&:id)
             user_userstats.include? userstat.id
+        end
+
+        can :manage, Comment do |comment|
+            user_comments = user.comments.map(&:id)
+            user_comments.include? comment.id
         end
     else
         can :create, User

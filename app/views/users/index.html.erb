@@ -1,10 +1,10 @@
 <div class = "container">
   <div class="row">
-    <div class = "col s4 offset-s4">
+    <div class = "col s8 offset-s2">
       <table class="highlight">
         <thead>
           <tr>
-            <th><h4>All ClearVoltex Users</h4></th>
+            <th><h4>All Users</h4></th>
           </tr>
         </thead>
 
@@ -12,6 +12,16 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= link_to user.display_name, user %></td>
+              <td><% if user.dan > 0 && user.dan <= 12 %>
+                  <% if user.dan == 12 %>
+                    SKILL LEVEL.INF
+                  <% else %>
+                    SKILL LEVEL.<%= user.dan %>
+                  <% end %>
+                <% else %>
+                  -
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

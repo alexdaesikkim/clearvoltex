@@ -3,15 +3,23 @@
     	<a class="waves-effect waves-light btn blue" onclick="change_status(this)">Clear</a>
     <% end %>
 	<ul class="section table-of-contents">
+	Courses
 	<% dans.each do |dan_level| %>
 		<% if !(dan_level.nil?) %>
-			Level<%= dan_level.first.first.level %>
-			<li><a href=<%= "#dan_#{dan_level.first.first.level}" %>>Level<%= dan_level.first.first.level %></a></li>
+			<% if dan_level.first.first.level == 12 %>
+				<li><a href=<%= "#dan_#{dan_level.first.first.level}" %>>LEVEL.∞</a></li>
+			<% elsif dan_level.first.first.level == 13 %>
+				<br>
+				<li><a href=<%= "#dan_#{dan_level.first.first.level}" %>>KAC 6TH</a></li>
+			<% elsif dan_level.first.first.level == 14 %>
+				<br>
+				<li><a href=<%= "#dan_#{dan_level.first.first.level}" %>>天下一</a></li>
+			<% else %>
+				<li><a href=<%= "#dan_#{dan_level.first.first.level}" %>>LEVEL.<%= dan_level.first.first.level %></a></li>
+			<% end %>
 		<% end %>
 	<% end %>
 	<br>
 	<li><a href="#top">Top</a></li>
 	</ul>
 </div>
-
-<!-- figure out how I can create page without having all userstats -->
