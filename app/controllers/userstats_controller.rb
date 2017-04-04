@@ -91,39 +91,34 @@ class UserstatsController < ApplicationController
     @userstat = Userstat.where(:user_id=>params[:userstat][:user_id]).where(:difficulty_id=>params[:userstat][:difficulty_id]).first
     if(!@userstat.nil?)
       scores = ["not_played", "D", "C", "B", "A", "Aplus", "AA", "AAplus", "AAA", "AAAplus", "S"]
-      if(@userstat.score.nil?)
-        @userstat.score = "D"
-        @userstat.save
-      else
-        scorestate = @userstat.score
-        x = 0
-        case scorestate
-          when "not_played"
-            x = 1
-          when "D"
-            x = 2
-          when "C"
-            x = 3
-          when "B"
-            x = 4
-          when "A"
-            x = 5
-          when "Aplus"
-            x = 6
-          when "AA"
-            x = 7
-          when "AAplus"
-            x = 8
-          when "AAA"
-            x = 9
-          when "AAAplus"
-            x = 10
-          else
-            x = 0 
-        end
-        @userstat.score = scores[x]
-        @userstat.save
+      scorestate = @userstat.score
+      x = 0
+      case scorestate
+        when "not_played"
+          x = 1
+        when "D"
+          x = 2
+        when "C"
+          x = 3
+        when "B"
+          x = 4
+        when "A"
+          x = 5
+        when "Aplus"
+          x = 6
+        when "AA"
+          x = 7
+        when "AAplus"
+          x = 8
+        when "AAA"
+          x = 9
+        when "AAAplus"
+          x = 10
+        else
+          x = 0 
       end
+      @userstat.score = scores[x]
+      @userstat.save
     else
       @userstat = Userstat.new(userstat_params)
       @userstat.clear = "not_played"

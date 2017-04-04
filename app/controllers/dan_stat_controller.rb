@@ -37,42 +37,37 @@ class DanStatController < ApplicationController
     @user = User.find(params[:danstat][:user_id])
     if(!@danstat.nil?)
       scores = ["not_played", "D", "C", "B", "A", "Aplus", "AA", "AAplus", "AAA", "AAAplus", "S"]
-      if(@danstat.score.nil?)
-        @danstat.score = "D"
-        @danstat.save
-      else
-        scorestate = @danstat.score
-        x = 0
-        case scorestate
-          when "not_played"
-            x = 1
-          when "D"
-            x = 2
-          when "C"
-            x = 3
-          when "B"
-            x = 4
-          when "A"
-            x = 5
-          when "Aplus"
-            x = 6
-          when "AA"
-            x = 7
-          when "AAplus"
-            x = 8
-          when "AAA"
-            x = 9
-          when "AAAplus"
-            x = 10
-          else
-            x = 0 
-        end
-        @danstat.score = scores[x]
-        @danstat.save
+      scorestate = @danstat.score
+      x = 0
+      case scorestate
+        when "not_played"
+          x = 1
+        when "D"
+          x = 2
+        when "C"
+          x = 3
+        when "B"
+          x = 4
+        when "A"
+          x = 5
+        when "Aplus"
+          x = 6
+        when "AA"
+          x = 7
+        when "AAplus"
+          x = 8
+        when "AAA"
+          x = 9
+        when "AAAplus"
+          x = 10
+        else
+          x = 0 
       end
+      @danstat.score = scores[x]
+      @danstat.save
     else
       @danstat = DanStat.new(danstat_params)
-      @danstat.clear = "not_played"
+      @danstat.clear = "dan_not_played"
       @danstat.score = "D"
       @danstat.save
     end
