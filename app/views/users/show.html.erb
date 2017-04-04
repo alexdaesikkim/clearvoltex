@@ -125,9 +125,9 @@
       else{
         $.post(
           '/userstats/update_score.json',
-          { danstat:
+          { userstat:
             {
-              user_id: <%= @user.id %>, dan_id: current_id
+              user_id: <%= @user.id %>, difficulty_id: current_id
             }
           },
           function(data){
@@ -160,7 +160,7 @@
             }
           },
           function(data){
-            window.alert("pressed update score");
+            dan.getElementsByTagName('img')[6].src = score_assets[str_to_int(data.score)];
           }
         )
       }      

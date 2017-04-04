@@ -13,13 +13,9 @@
             <tr>
               <td><%= link_to user.display_name, user %></td>
               <td><% if user.dan > 0 && user.dan <= 12 %>
-                  <% if user.dan == 12 %>
-                    SKILL LEVEL.INF
-                  <% else %>
-                    SKILL LEVEL.<%= user.dan %>
-                  <% end %>
+                  <img class="user_dan" src= <%= asset_url "dans/#{user.dan}.gif" %> />
                 <% else %>
-                  -
+                  <img class="user_dan" src= <%= asset_url "dans/0.gif" %> />
                 <% end %>
               </td>
             </tr>

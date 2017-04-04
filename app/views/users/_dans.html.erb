@@ -3,11 +3,11 @@
 	<div id = <%= "dan_#{dan_level.first.first.level}" %> class="section scrollspy">
 		<h3>
 			<% if dan_level.first.first.level == 12 %>
-				SKILL ANALYZER LEVEL.∞
+				SKILL ANALYZER LEVEL.∞<br><img src = <%= asset_url "dans/12.gif" %> />
 			<% elsif dan_level.first.first.level == 13 %>
-				KAC 2016 Course
+				KAC THE 6TH Course
 			<% else %>
-				<%= "SKILL ANALYZER LEVEL.#{dan_level.first.first.level}" %>
+				<%= "SKILL ANALYZER LEVEL.#{dan_level.first.first.level}" %><br><img src = <%= asset_url "dans/#{dan_level.first.first.level}.gif" %> />
 			<% end %>
 		</h3>
 		<div class="divider"></div>
