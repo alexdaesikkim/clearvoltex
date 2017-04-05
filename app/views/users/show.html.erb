@@ -17,8 +17,46 @@
       </div>
     </div>
     <div class = "row">
+      <div class = "col hide-on-small-only m1">
+        <br>
+        <span class = "instruction_not_played">
+          <div class = "square">
+          </div>
+          Not Played
+        </span>
+        <br>
+        <span class = "instruction_failed">
+          <div class = "square">
+          </div>
+          Failed
+        </span>
+        <br>
+        <span class = "instruction_cleared">
+          <div class = "square">
+          </div>
+          Cleared
+        </span>
+        <br>
+        <span class = "instruction_excessive">
+          <div class = "square">
+          </div>
+          Excessive
+        </span>
+        <br>
+        <span class = "instruction_UC">
+          <div class = "square">
+          </div>
+          UC
+        </span>
+        <br>
+        <span class = "instruction_PUC">
+          <div class = "square">
+          </div>
+          PUC
+        </span>
+      </div>
       <div id="tab-1">
-        <div class = "col s12 m10 offset-m1">
+        <div class = "col s12 m10">
           <%= render 'userstatview', tiers: @level_15, level: 15 %>
         </div>
         <div class = "col hide-on-small-only m1">
@@ -26,7 +64,7 @@
         </div>
       </div>
       <div id="tab-2">
-        <div class="col s12 m10 offset-m1">
+        <div class="col s12 m10">
           <%= render 'userstatview', tiers: @level_16, level: 16 %>
         </div>
         <div class = "col hide-on-small-only m1">
@@ -34,7 +72,7 @@
         </div>
       </div>
       <div id="tab-3">
-        <div class="col s12 m10 offset-m1">
+        <div class="col s12 m10">
           <%= render 'userstatview', tiers: @level_17, level: 17 %>
         </div>
         <div class = "col hide-on-small-only m1">
@@ -42,7 +80,7 @@
         </div>
       </div>
       <div id="tab-4">
-        <div class="col s12 m10 offset-m1">
+        <div class="col s12 m10">
           <%= render 'userstatview', tiers: @level_18, level: 18 %>
         </div>
         <div class = "col hide-on-small-only m1">
@@ -50,7 +88,7 @@
         </div>
       </div>
       <div id="tab-5">
-        <div class="col s12 m10 offset-m1">
+        <div class="col s12 m10">
           <%= render 'userstatview', tiers: @level_19, level: 19 %>
           <%= render 'userstatview', tiers: @level_20, level: 20 %>
         </div>
@@ -59,7 +97,7 @@
         </div>
       </div>
       <div id="tab-6">
-        <div class="col s12 m10 offset-m1">
+        <div class="col s12 m10">
           <%= render 'dans', dans: @dans_default %>
         </div>
         <div class = "col hide-on-small-only m1">

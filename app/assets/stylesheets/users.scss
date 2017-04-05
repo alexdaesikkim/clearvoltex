@@ -2,63 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.not_played {
-	display: inline-block;
+.song img{
 	height: 175px;
 	width: auto;
-	position: relative;
-	top: 0;
-	left: 0;
+}
+
+.not_played {
 	border:9px solid;
 	filter: grayscale(100%);
 }
 
 .failed {
-	display: inline-block;
-	height: 175px;
-	width: auto;
- 	position: relative;
-    top: 0;
-	left: 0;
-	border:9px solid #808080;
-	filter: grayscale(50%);
+	border:9px solid #2a7555;
+	filter: grayscale(75%);
 }
 
 .cleared {
-	height: 175px;
-	width: auto;
-	position: relative;
-	top: 0;
-	left: 0;
-	border:9px solid #00cc00;
+	border:9px solid #54ebab;
 }
 
 .excessive {
-	height: 175px;
-	width: auto;
-	position: relative;
-	top: 0;
-	left: 0;
-	border:9px solid #990099;
+	border:9px solid #cb36f7;
 }
 
 .UC {
-	height: 175px;
-	width: auto;
-	position: relative;
-	top: 0;
-	left: 0;
-	border:9px solid #ff3399;
+	border:9px solid #ff6898;
 }
 
 .PUC {
-	height: 175px;
-	width: auto;
-	position: relative;
-	top: 0;
-	left: 0;
-	border:9px solid #ffff00;
+	border:9px solid #fffe43;
 }
 
 .parent {
@@ -112,7 +84,7 @@
  	position: relative;
     top: 0;
 	left: 0;
-	border:9px solid #808080;
+	border:9px solid #2a7555;;
 }
 
 .dan_failed .dan_song {
@@ -125,7 +97,7 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	border:9px solid #00cc00;
+	border:9px solid #54ebab;
 }
 
 .dan_UC {
@@ -134,7 +106,7 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	border:9px solid #ff3399;
+	border:9px solid #ff6898;
 }
 
 .dan_PUC {
@@ -143,7 +115,7 @@
 	position: relative;
 	top: 0;
 	left: 0;
-	border:9px solid #ffff00;
+	border:9px solid #fffe43;
 }
 
 .dan_parent {
@@ -194,4 +166,32 @@
 .user_dan{
 	width: 80px;
 	height: auto;
+}
+
+.square{
+	width: 40px;
+	height: 10px;
+}
+
+.instruction_not_played .square{
+	background-color: #212121;
+}
+.instruction_failed .square{
+	background-color: #2a7555;
+}
+
+.instruction_cleared .square{
+	background-color: #54ebab;
+}
+
+.instruction_excessive .square{
+	background-color: #cb36f7;
+}
+
+.instruction_UC .square{
+	background-color: #ff6898;
+}
+
+.instruction_PUC .square{
+	background-color: #fff000;
 }
