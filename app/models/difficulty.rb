@@ -22,6 +22,17 @@ class Difficulty < ApplicationRecord
 		end
 	end
 
+	def clear_rate
+    	clear_count = self.userstats.where("clear != ? AND clear != ?", "not_played", "failed").count
+    	userstat_count = self.userstats.where("clear != ?", "not_played").count
+
+    	if userstat_count == 0
+    		return "NO PLAY"
+    	else
+    		return (((clear_count * 1000)/(userstat_count)) / 10.0).to_s + "%"
+    	end
+	end
+
 	def tag_to_string
 		case self.difficulty_name
 	        when "2"
