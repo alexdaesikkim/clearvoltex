@@ -16,8 +16,9 @@
 		<div class="section">
 			<% tier.each do |difficulty| %>
 				<span class="parent">
-					<div class="song"><img class=<%= difficulty.user_clear(@user.id) %> src= <%= asset_url "song#{difficulty.photo}" %> onclick="update(this.parentElement.parentElement, <%= difficulty.id %>)" /></div>
-					<a href= <%= "/difficulty/#{difficulty.id}" %>><img class="difficulty_tag" src = <%= asset_url "difficulty/#{difficulty.difficulty_name}.png" %> /></a>
+					<div class="song"><%= image_tag("song#{difficulty.photo}", class: difficulty.user_clear(@user.id), onclick: "update(this.parentElement.parentElement, #{difficulty.id})", title: "#{difficulty.song_name}\nCLEAR: #{difficulty.clear_rate}") %></div>
+					<a href= <%= "/difficulty/#{difficulty.id}" %>><img class="difficulty_tag" src = <%= asset_url "difficulty/#{difficulty.difficulty_name}.png" %> />
+					</a>
 					<img class="score_tag" src = <%= asset_url "grades/#{difficulty.user_score(@user.id)}.png" %> />
 				</span>
 			<% end %>

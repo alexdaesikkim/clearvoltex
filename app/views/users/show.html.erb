@@ -18,45 +18,10 @@
     </div>
     <div class = "row">
       <div class = "col hide-on-small-only m1">
-        <br>
-        <span class = "instruction_not_played">
-          <div class = "square">
-          </div>
-          Not Played
-        </span>
-        <br>
-        <span class = "instruction_failed">
-          <div class = "square">
-          </div>
-          Failed
-        </span>
-        <br>
-        <span class = "instruction_cleared">
-          <div class = "square">
-          </div>
-          Cleared
-        </span>
-        <br>
-        <span class = "instruction_excessive">
-          <div class = "square">
-          </div>
-          Excessive
-        </span>
-        <br>
-        <span class = "instruction_UC">
-          <div class = "square">
-          </div>
-          UC
-        </span>
-        <br>
-        <span class = "instruction_PUC">
-          <div class = "square">
-          </div>
-          PUC
-        </span>
+      <%= render 'instructions' %>
       </div>
       <div id="tab-1">
-        <div class = "col s12 m10">
+        <div class = "col s12 m10 offset">
           <%= render 'userstatview', tiers: @level_15, level: 15 %>
         </div>
         <div class = "col hide-on-small-only m1">
