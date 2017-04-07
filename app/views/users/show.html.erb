@@ -18,7 +18,7 @@
     </div>
     <div class = "row">
       <div class = "col hide-on-small-only m1">
-      <%= render 'instructions' %>
+        <%= render 'instructions' %>
       </div>
       <div id="tab-1">
         <div class = "col s12 m10 offset">
@@ -72,6 +72,9 @@
     </div>
   </div>
 </div>
+<!-- instruction div here -->
+<%= render 'instruction-modal' %>
+
 <% if can? :manage, @user %>
   <%= javascript_tag do %>
     var tag = 0;

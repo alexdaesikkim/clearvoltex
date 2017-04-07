@@ -34,7 +34,8 @@ $(window).on('load', function(){
 		$('.toc-wrapper').pushpin({top: $('.toc-wrapper').offset().top,
 								   bottom: $('.toc-wrapper').offset().bottom,
 								   offset: 100});
-		$('.scrollspy').scrollSpy();	
+		$('.scrollspy').scrollSpy();
+		$('.modal').modal();
 	},1501);
  });
 
