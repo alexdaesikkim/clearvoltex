@@ -60,6 +60,10 @@ class User < ApplicationRecord
 		ClearvoltexMailer.password_reset(self).deliver_now
 	end
 
+	def password_reset_expired?
+		reset_sent_at < 2.hours.ago
+	end
+
 	ROLES = [['admin', :admin],['regular', :regular]]
 
     def role?(authorized_role)
