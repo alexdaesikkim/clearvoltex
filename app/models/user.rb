@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token
+	attr_accessor :remember_token, :reset_token
 
 	before_save { self.email = email.downcase }
 	before_save { self.username = username.downcase }

@@ -12,9 +12,9 @@ class CommentsController < ApplicationController
 		  @user_vote.user_id = params[:comment][:user_id]
 		  @user_vote.upvote = true
 		  @user_vote.save
-	      flash[:success] = "Comment posted!"
+	      flash.now[:success] = "Comment posted!"
 		else
-			flash[:success] = "Invalid operation"
+			flash.now[:success] = "Invalid operation"
 		end
  	 end
 

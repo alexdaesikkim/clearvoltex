@@ -126,7 +126,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        flash[:success] = "You will receive an email once accepted into beta"
+        flash.now[:success] = "You will receive an email once accepted into beta"
         format.html { redirect_to '/' }
       else
         format.html { render :new }
@@ -172,7 +172,7 @@ class UsersController < ApplicationController
     @user_update.active = true
     @user_update.save
     ClearvoltexMailer.manual_activation(@user_update).deliver
-    flash[:success] = 'Mail has been sent!'
+    flash.now[:success] = 'Mail has been sent!'
   end
 
   private
