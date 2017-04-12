@@ -169,29 +169,35 @@
 }
 
 .square{
-	width: 40px;
-	height: 10px;
+	width: 100px;
+	height: 20px;
 }
 
 .instruction_not_played .square{
+	display: inline-block;
 	background-color: #212121;
 }
 .instruction_failed .square{
+	display: inline-block;
 	background-color: #2a7555;
 }
 
 .instruction_cleared .square{
+	display: inline-block;
 	background-color: #54ebab;
 }
 
 .instruction_excessive .square{
+	display: inline-block;
 	background-color: #cb36f7;
 }
 
 .instruction_UC .square{
+	display: inline-block;
 	background-color: #ff6898;
 }
 
 .instruction_PUC .square{
+	display: inline-block;
 	background-color: #fff000;
 }

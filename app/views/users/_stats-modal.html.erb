@@ -1,0 +1,25 @@
+<div id="stats-modal" class="modal modal-fixed-footer">
+  <div class="modal-content">
+    <div class="container">
+      <h4 class = "center-align">Quick Summary</h4>
+      <div class="row">
+        <div class="col s3 offset-s3">
+          SOME STUPID STAT
+        </div>
+        <div class="col s4">
+          <%= pie_chart [ 
+                  ["FAILED", @user.userstats.where("clear = ?", "failed").count],
+                  ["CLEARED", @user.userstats.where("clear = ?", "cleared").count],
+                  ["EXC CLEARED", @user.userstats.where("clear = ?", "excessive").count],
+                  ["ULTIMATE CHAIN", @user.userstats.where("clear = ?", "UC").count],
+                  ["PERFECT", @user.userstats.where("clear = ?", "PUC").count]
+                  ],
+                colors: [ '#808080', '#00cc00', '#990099', '#ff3399', '#ffff00' ] %>
+        </div>
+      </div>
+    </div>    
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+  </div>
+</div>
