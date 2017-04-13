@@ -21,6 +21,8 @@ require 'csv'
 
 diff_text = File.read(Rails.root.join('lib', 'seeds', 'sdvx_diffs.csv'))
 diffs = CSV.parse(diff_text, :headers => true, :encoding => 'UTF-8')
+count = 2
+song = 1
 puts "Saving difficulties"
 diffs.each do |row|
 	d = Difficulty.find_or_initialize_by(id: row['id'])
@@ -40,7 +42,13 @@ diffs.each do |row|
 		puts "\nWARNING: THE SONG #{d.song_name} #{d.difficulty_name} IS NOT ACTIVE"
 		d.active = false
 	end
-	d.save
+	if d.save
+		puts"\nRow #{count} saved. Song count: #{song}"
+	else
+		puts "ERROR FOR SONG #{d.song_name}"
+	end
+	count = count + 1
+	song = song + 1
 end
 
 puts "\nThere are #{Difficulty.count} difficulties"
