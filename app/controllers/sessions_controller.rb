@@ -8,25 +8,25 @@ class SessionsController < ApplicationController
       if user.active
     		log_in(user)
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        flash.now[:success] = "Logged in!"
         if user.role == "regular"
     		  redirect_to user
         else
           redirect_to '/admin'
         end
+        flash[:success] = "Logged in!"
       else
-        flash.now[:warning] = "Your account has not been activated yet."
         render 'new'
+        flash[:warning] = "Your account has not been activated yet."
       end
   	else
-      flash.now[:warning] = "Invalid username/password combination"
   		render 'new'
+      flash[:warning] = "Invalid username/password combination"
   	end
   end
 
   def destroy
     log_out if logged_in?
-    flash.now[:success] = "Logged out!"
     redirect_to '/'
+    flash[:success] = "Logged out!"
   end
 end
