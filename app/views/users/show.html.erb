@@ -1,7 +1,7 @@
   <div class="container">
     <div class = "row" style="height:100px">
       <div class = "col s8 offset-s2">
-        <center><h2><%= @user.display_name %><!--<a href="#stats-modal"><i class="small material-icons black-text">info_outline</i></a>--></h2></center>
+        <center><h2><%= @user.display_name %> <a href="#stats-modal"><i class="small material-icons black-text">info_outline</i></a></h2></center>
       </div>
     </div>
     <div class = "row">
@@ -76,5 +76,134 @@
 <%= render 'instruction-modal' %>
 <%= render 'stats-modal' %>
 
+<% if can? :manage, @user %>
+  <%= javascript_tag do %>
+    var tag = 0;
 
-<%= javascript_include_tag 'test' %>
+    var score_assets=[
+      "<%= asset_url "grades/not_played.png" %>",
+      "<%= asset_url "grades/D.png" %>",
+      "<%= asset_url "grades/C.png" %>",
+      "<%= asset_url "grades/B.png" %>",
+      "<%= asset_url "grades/A.png" %>",
+      "<%= asset_url "grades/Aplus.png" %>",
+      "<%= asset_url "grades/AA.png" %>",
+      "<%= asset_url "grades/AAplus.png" %>",
+      "<%= asset_url "grades/AAA.png" %>",
+      "<%= asset_url "grades/AAAplus.png" %>",
+      "<%= asset_url "grades/S.png" %>"
+    ];
+
+    function fuckthis(){
+      return false;
+    }
+
+    function change_status(button){
+      var button_class_name = button.className;
+      var all_buttons = document.getElementsByClassName(button_class_name);
+      if(tag == 0){
+        for(var x = 0; x < all_buttons.length; x++){
+          all_buttons[x].text = "Score";
+        }
+        tag = 1;
+      }
+      else{
+        for(var x = 0; x < all_buttons.length; x++){
+          all_buttons[x].text = "Clear";
+        }
+        tag = 0;
+      }
+    }
+
+    function update(diff, current_id){
+      if(tag == 0){
+        $.post(
+          '/userstats/update_clear.json',
+          { userstat:
+            {
+              user_id: <%= @user.id %>, difficulty_id: current_id
+            }
+          },
+          function(data){
+            prevClear = clear_to_int(diff.getElementsByTagName('img')[0].className);
+            currClear = clear_to_int(data.clear);
+            diff.getElementsByTagName('img')[0].className = data.clear;
+            var clear_chart = Chartkick.charts["clear_chart"].getData();
+            if(prevClear != -1){
+              clear_chart[prevClear][1]--;
+            }
+            if(currClear != -1){
+              clear_chart[currClear][1]++;
+            }
+            Chartkick.charts["clear_chart"].updateData(clear_chart);
+          }
+        )
+      }
+      else{
+        $.post(
+          '/userstats/update_score.json',
+          { userstat:
+            {
+              user_id: <%= @user.id %>, difficulty_id: current_id
+            }
+          },
+          function(data){
+            diff.getElementsByTagName('img')[2].src = score_assets[str_to_int(data.score)];
+          }
+        )
+      }
+    }
+
+    function dan_update(dan, current_id){
+      if(tag == 0){
+        $.post(
+          '/danstats/update_clear.json',
+          { danstat:
+            {
+              user_id: <%= @user.id %>, dan_id: current_id
+            }
+          },
+          function(data){
+            dan.className = data.clear;
+          }
+        )
+      }
+      else{
+        $.post(
+          '/danstats/update_score.json',
+          { danstat:
+            {
+              user_id: <%= @user.id %>, dan_id: current_id
+            }
+          },
+          function(data){
+            dan.getElementsByTagName('img')[6].src = score_assets[grade_to_int(data.score)];
+          }
+        )
+      }      
+    }
+
+    function grade_to_int(grade){
+      if(grade == "not_played") return 0;
+      if(grade == "D") return 1;
+      if(grade == "C") return 2;
+      if(grade == "B") return 3;
+      if(grade == "A") return 4;
+      if(grade == "Aplus") return 5;
+      if(grade == "AA") return 6;
+      if(grade == "AAplus") return 7;
+      if(grade == "AAA") return 8;
+      if(grade == "AAAplus") return 9;
+      return 10;
+    }
+
+    function clear_to_int(clear){
+      if(clear == "not_played") return -1;
+      if(clear == "failed") return 0;
+      if(clear == "clear") return 1;
+      if(clear == "excessive") return 2;
+      if(clear == "UC") return 3;
+      return 4;
+    }
+  <% end %>
+<% end %>
