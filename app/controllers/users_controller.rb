@@ -126,8 +126,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        flash.now[:success] = "You will receive an email once accepted into beta"
         format.html { redirect_to '/' }
+        flash[:success] = "You will receive an email once accepted into beta"
       else
         format.html { render :new }
         format.json { render json: @user.flash, status: :unprocessable_entity }
@@ -172,7 +172,7 @@ class UsersController < ApplicationController
     @user_update.active = true
     @user_update.save
     ClearvoltexMailer.manual_activation(@user_update).deliver
-    flash.now[:success] = 'Mail has been sent!'
+    flash[:success] = 'Mail has been sent!'
   end
 
   private
