@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.where("role != ?", "admin")
-    @users_dan = User.where("role != ?", "admin").order("dan DESC")
+    @users = User.where("role != ?", "admin").paginate(:page => params[:page], :per_page => 1)
+    @users_dan = User.where("role != ?", "admin").order("dan DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /users/1

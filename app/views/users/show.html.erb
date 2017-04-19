@@ -164,7 +164,18 @@
             }
           },
           function(data){
-            diff.getElementsByTagName('img')[2].src = score_assets[str_to_int(data.score)];
+            var prevScore = grade_to_int(data.score)-1;
+            var currScore = grade_to_int(data.score);
+            if(currScore == 0) prevScore = 10;
+            var prevScoreId = "score_modal_"+prevScore;
+            var currScoreId = "score_modal_"+currScore;
+            diff.getElementsByTagName('img')[2].src = score_assets[grade_to_int(data.score)];
+            if(prevScore != 0){
+              document.getElementById(prevScoreId).innerHTML--;
+            }
+            if(currScore != 0){
+              document.getElementById(currScoreId).innerHTML++;
+            }
           }
         )
       }
