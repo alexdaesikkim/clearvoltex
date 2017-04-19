@@ -125,16 +125,32 @@
             }
           },
           function(data){
-            prevClear = clear_to_int(diff.getElementsByTagName('img')[0].className);
-            currClear = clear_to_int(data.clear);
+            var totalClears = document.getElementById("total_clears").innerHTML;
+            var totalPlayed = document.getElementById("total_played").innerHTML;
+            var prevClear = clear_to_int(diff.getElementsByTagName('img')[0].className);
+            var currClear = clear_to_int(data.clear)
             diff.getElementsByTagName('img')[0].className = data.clear;
             var clear_chart = Chartkick.charts["clear_chart"].getData();
+            var prevClearId = "clear_modal_" + prevClear;
+            var currClearId = "clear_modal_" + currClear;
             if(prevClear != -1){
               clear_chart[prevClear][1]--;
+              document.getElementById(prevClearId).innerHTML = clear_chart[prevClear][1];
+              if(prevClear == 0) totalClears++;
+            }
+            else{
+              totalPlayed++;
             }
             if(currClear != -1){
               clear_chart[currClear][1]++;
+              document.getElementById(currClearId).innerHTML = clear_chart[currClear][1];
             }
+            else{
+              totalPlayed--;
+              totalClears--;
+            }
+            document.getElementById("total_clears").innerHTML = totalClears;
+            document.getElementById("total_played").innerHTML = totalPlayed;
             Chartkick.charts["clear_chart"].updateData(clear_chart);
           }
         )
@@ -200,7 +216,7 @@
     function clear_to_int(clear){
       if(clear == "not_played") return -1;
       if(clear == "failed") return 0;
-      if(clear == "clear") return 1;
+      if(clear == "cleared") return 1;
       if(clear == "excessive") return 2;
       if(clear == "UC") return 3;
       return 4;

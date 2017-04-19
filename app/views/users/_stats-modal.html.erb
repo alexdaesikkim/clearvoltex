@@ -1,10 +1,40 @@
 <div id="stats-modal" class="modal modal-fixed-footer">
   <div class="modal-content">
     <div class="container">
-      <h4 class = "center-align">Quick Summary</h4>
+      <h4 class = "center-align">Stats for <%= @user.display_name %></h4>
+      <h5 class = "center-align"> Total Clears: <span id = "total_clears"><%= @user.userstats.where("clear != ? AND clear != ?", "not_played", "failed").count %></span> / <span id = "total_played"><%= @user.userstats.where("clear != ?", "not_played").count %></span> </h5>
       <div class="row">
-        <div class="col s3 offset-s3">
-          SOME STUPID STAT
+        <div id = "userclear_modal" class="col s3">
+          <img src = <%= asset_url "clears/failed.png" %> /> - <span id = "clear_modal_0"><%= @user.userstats.where("clear = ?", "failed").count %></span>
+          <br>
+          <img src = <%= asset_url "clears/cleared.png" %> /> - <span id = "clear_modal_1"><%= @user.userstats.where("clear = ?", "cleared").count %></span>
+          <br>
+          <img src = <%= asset_url "clears/excessive.png" %> /> - <span id = "clear_modal_2"><%= @user.userstats.where("clear = ?", "excessive").count %></span>
+          <br>
+          <img src = <%= asset_url "clears/UC.png" %> /> - <span id = "clear_modal_3"><%= @user.userstats.where("clear = ?", "UC").count %></span>
+          <br>
+          <img src = <%= asset_url "clears/PUC.png" %> /> - <span id = "clear_modal_4"><%= @user.userstats.where("clear = ?", "PUC").count %></span>
+        </div>
+        <div id = "userscore_modal" class="col s3">
+          <img src = <%= asset_url "grades/D.png" %> /> - <span id = "score_modal_1"><%= @user.userstats.where("score = ?", "D").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/C.png" %> /> - <span id = "score_modal_2"><%= @user.userstats.where("score = ?", "C").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/B.png" %> /> - <span id = "score_modal_3"><%= @user.userstats.where("score = ?", "B").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/A.png" %> /> - <span id = "score_modal_4"><%= @user.userstats.where("score = ?", "A").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/Aplus.png" %> /> - <span id = "score_modal_5"><%= @user.userstats.where("score = ?", "Aplus").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/AA.png" %> /> - <span id = "score_modal_6"><%= @user.userstats.where("score = ?", "AA").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/AAplus.png" %> /> - <span id = "score_modal_7"><%= @user.userstats.where("score = ?", "AAplus").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/AAA.png" %> /> - <span id = "score_modal_8"><%= @user.userstats.where("score = ?", "AAA").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/AAAplus.png" %> /> - <span id = "score_modal_9"><%= @user.userstats.where("score = ?", "AAAplus").count %></span>
+          <br>
+          <img src = <%= asset_url "grades/S.png" %> /> - <span id = "score_modal_10"><%= @user.userstats.where("score = ?", "S").count %></span>
         </div>
         <div class="col s4">
           <%= pie_chart [ 
