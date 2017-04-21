@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :dans
   resources :users
+  resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   post		'/comments/create' => 'comments#create'

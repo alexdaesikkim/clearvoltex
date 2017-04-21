@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408185417) do
+ActiveRecord::Schema.define(version: 20170421211906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,15 +88,17 @@ ActiveRecord::Schema.define(version: 20170408185417) do
     t.string   "display_name"
     t.string   "email"
     t.string   "role"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "remember_digest"
-    t.integer  "rating",          default: 0
-    t.boolean  "active",          default: false
-    t.boolean  "ban",             default: false
-    t.integer  "dan",             default: 0
+    t.integer  "rating",            default: 0
+    t.boolean  "active",            default: false
+    t.boolean  "ban",               default: false
+    t.integer  "dan",               default: 0
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "activation_digest"
+    t.datetime "activated_at"
   end
 
   create_table "userstats", force: :cascade do |t|

@@ -126,8 +126,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        UserMailer.account_activation(@user).deliver_now
+        flash[:success] = "Please check your email to activate your account"
         format.html { redirect_to '/' }
-        flash[:success] = "You will receive an email once accepted into beta"
       else
         format.html { render :new }
         format.json { render json: @user.flash, status: :unprocessable_entity }

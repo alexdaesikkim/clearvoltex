@@ -1,14 +1,16 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token, :reset_token
+	attr_accessor :remember_token, :activation_token, :reset_token
 
 	before_save { self.email = email.downcase }
 	before_save { self.username = username.downcase }
+	before_create :create_activation_digest
+
 	has_many :userstats
 	has_many :comments
 	has_many :votes
 	has_many :dan_stats
 
-	validates :username, presence: true, length: { in: 6..20 },
+	validates :username, presence: true, :with => /^[a-zA-Z0-9_.-]*$/, length: { in: 6..20 },
 						 uniqueness: { case_sensitive: false }
 	validates :email, presence: true, uniqueness: { case_sensitive: false }
 	validates_format_of :email, :with => /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Invalid e-mail format"
@@ -79,4 +81,11 @@ class User < ApplicationRecord
     		update_attribute(:dan, highest_dan.dan.level)
     	end
     end
+
+	private
+		def create_activation_digest
+			self.activation_token = User.new_token
+			self.activation_digest = User.digest(activation_token)
+		end
+
 end
