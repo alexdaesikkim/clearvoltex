@@ -10,7 +10,7 @@ class User < ApplicationRecord
 	has_many :votes
 	has_many :dan_stats
 
-	validates :username, presence: true, :with => /^[a-zA-Z0-9_.-]*$/, length: { in: 6..20 },
+	validates :username, presence: true, format: { with: /\A[a-zA-Z0-9\-_]+\z/i }, length: { in: 6..20 },
 						 uniqueness: { case_sensitive: false }
 	validates :email, presence: true, uniqueness: { case_sensitive: false }
 	validates_format_of :email, :with => /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Invalid e-mail format"
@@ -34,9 +34,10 @@ class User < ApplicationRecord
 		update_attribute(:remember_digest, User.digest(remember_token))
 	end
 
-	def authenticated?(remember_token)
-		return false if remember_digest.nil?
-		BCrypt::Password.new(remember_digest).is_password?(remember_token)
+	def authenticated?(attribute, token)
+		digest = send("#{attribute}_digest")
+		return false if digest.nil?
+		BCrypt::Password.new(digest).is_password?(token)
 	end
 
 	def forget

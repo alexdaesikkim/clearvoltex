@@ -126,7 +126,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        UserMailer.account_activation(@user).deliver_now
+        ClearvoltexMailer.account_activation(@user).deliver_now
         flash[:success] = "Please check your email to activate your account"
         format.html { redirect_to '/' }
       else

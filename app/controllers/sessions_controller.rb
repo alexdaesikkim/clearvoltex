@@ -15,8 +15,8 @@ class SessionsController < ApplicationController
         end
         flash[:success] = "Logged in!"
       else
-        render 'new'
-        flash[:warning] = "Your account has not been activated yet."
+        redirect_to root_url
+        flash[:warning] = "Please activate your account."
       end
   	else
   		render 'new'

@@ -1,7 +1,0 @@
-<%= @user.username %>, welcome to ClearVoltex Beta!
-
-To gain full access to the website, please click on the link below to activate your account.
-
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>
-
-Reminder: This service is still in beta stage. Any feedback is welcome and should be messaged directly to the developer, or clearvoltex@gmail.com with the subject starting with "Feedback:"
