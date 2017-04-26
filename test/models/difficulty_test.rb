@@ -4,7 +4,7 @@ class DifficultyTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-  should belong_to(:dan)
+  
   should have_many(:userstats)
   should have_many(:comments)
   test "Testing user_score" do

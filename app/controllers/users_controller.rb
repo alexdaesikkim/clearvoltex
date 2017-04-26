@@ -165,7 +165,9 @@ class UsersController < ApplicationController
     if current_user.role != "admin"
         redirect_to @user
     end
-    @unapproved_users = User.where("active = false AND role = ?", "regular")
+    @all_comments = Comment.all.order("created_at DESC")
+    @unapproved_comments = Comment.where("approved = false").order("created_at DESC")
+    @reported_comments = Comment.where("report > 0").order("report DESC").order("created_at DESC")
   end
 
   def activate

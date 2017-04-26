@@ -16,15 +16,17 @@ class CommentsController < ApplicationController
 		else
 			flash.now[:success] = "Invalid operation"
 		end
- 	 end
+ 	end
 
-	def destroy
-    	@comment.destroy
-	    respond_to do |format|
-	      format.html { redirect_to difficulties_url, notice: 'Comment was successfully destroyed.' }
-	      format.json { head :no_content }
-	    end
-	end
+ 	def protect
+ 		@comment = Comment.find(params[:comment][:id])
+ 		@comment.report = -1
+ 		@comment.save
+ 		respond_to do |format|
+ 			format.js
+ 			format .json {render :json => {:status => true, :comment => @comment}}
+ 		end
+ 	end
 
 	def upvote
     	@comment = Comment.find(params[:comment][:id])

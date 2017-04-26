@@ -1,41 +1,38 @@
-<center><h3>Manual Invitation Panel</h3></center>
+<center><h3>Admin Panel</h3></center>
 
 <div class="container">
-	<table>
-	    <thead>
-			<tr>
-				<th data-field="username">Username</th>
-				<th data-field="name">Name</th>
-				<th data-field="email">Email</th>
-				<th data-field="activate"></th>
-			</tr>
-	    </thead>
-
-	    <tbody>
-			<% @unapproved_users.each do |unapproved_user| %>
-				<tr>
-				   <td><%= unapproved_user.username %></td>
-			       <td><%= unapproved_user.display_name %></td>
-			       <td><%= unapproved_user.email %></td>
-			       <td><a class="waves-effect waves-light btn green" onclick="activate(<%= unapproved_user.id %>, this)">Activate</a></td>
-			    </tr>
+	<div class="row">
+		<div class="col s12 m6">
+			<h5>All Comments</h5>
+			<% @all_comments.each do |comment| %>
+				<%= comment.user.display_name %>:
+				<br>
+				<%= comment.content %>
+				<br>
+				Votes: <%= comment.reports %>
+				Reports: <%= comment.user_votes %>
+				<br>
+				<a id = <%= "delete_#{comment.id}" %>
+					class = "btn-floating waves-effect waves-light red"><i class="material-icons">keyboard_arrow_down</i></a>			
 			<% end %>
-		</tbody>
-	</table>
+		</div>
+		<div class="col s12 m6">
+			<h5>Reported Comments</h5>
+			<% @reported_comments.each do |comment| %>
+				<div id = "reported_#{comment.id}">
+					<%= comment.user.display_name %>:
+					<br>
+					<%= comment.content %>
+					<br>
+					Votes: <%= comment.reports %>
+					Reports: <%= comment.user_votes %>
+					<br>
+					<a id = <%= "remove_count_#{comment.id}" %>
+						class= "btn-floating waves-effect waves-light green"><i class="material-icons">keyboard_arrow_up</i></a>
+					<a id = <%= "delete_#{comment.id}" %>
+						class = "btn-floating waves-effect waves-light red"><i class="material-icons">keyboard_arrow_down</i></a>			
+				</div>
+			<% end %>
+		</div>
+	</div>
 </div>
-<%= javascript_tag do %>
-	function activate(user_id, row){
-	    $.post(
-	      '/users/activate.json',
-	      { user:
-	        {
-	          id: user_id
-	        }
-	      },
-	      function(){
-	      	window.alert("Activated user with id: "+user_id);
-	        row.closest('tr').remove();
-	      }
-	    )
-	}
-<% end %>
