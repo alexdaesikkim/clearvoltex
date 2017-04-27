@@ -16,7 +16,6 @@
 				<h4>
 					<%= "#{dan_courses.first.release_date}" %>
 				</h4>
-				<br>
 				<% dan_courses.each do |dan| %>
 					<span class = "dan_parent">
 						<h5><%= "#{dan.name}" %></h5>
@@ -28,7 +27,9 @@
 								<img class="dan_score_tag" src = <%= asset_url "grades/#{dan.user_score(@user.id)}.png" %> />
 							</div>
 					</span>
-				<% end %>		
+				<% end %>
+				<br>
+				<br>
 			<% end %>
 		</div>
 	</div>

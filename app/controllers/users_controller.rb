@@ -15,25 +15,31 @@ class UsersController < ApplicationController
     @dans_default = [
       [
         Dan.where("active = true AND level = 7 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("active = true AND level = 7 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 7 AND release_date = ?", Date.new(2017,2,17)).order("name ASC"),
+        Dan.where("active = true AND level = 7 AND release_date = ?", Date.new(2017,4,27)).order("name ASC")
       ],
       [
         Dan.where("active = true AND level = 8 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("active = true AND level = 8 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 8 AND release_date = ?", Date.new(2017,2,17)).order("name ASC"),
+        Dan.where("active = true AND level = 8 AND release_date = ?", Date.new(2017,4,27)).order("name ASC")
       ],
       [
         Dan.where("active = true AND level = 9 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("active = true AND level = 9 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 9 AND release_date = ?", Date.new(2017,2,17)).order("name ASC"),
+        Dan.where("active = true AND level = 9 AND release_date = ?", Date.new(2017,4,27)).order("name ASC")
       ],
       [
         Dan.where("active = true AND level = 10 AND release_date = ?", Date.new(2016,12,28)).order("name ASC"),
-        Dan.where("active = true AND level = 10 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 10 AND release_date = ?", Date.new(2017,2,17)).order("name ASC"),
+        Dan.where("active = true AND level = 10 AND release_date = ?", Date.new(2017,4,27)).order("name ASC")
       ],
       [
-        Dan.where("active = true AND level = 11 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 11 AND release_date = ?", Date.new(2017,2,17)).order("name ASC"),
+        Dan.where("active = true AND level = 11 AND release_date = ?", Date.new(2017,4,27)).order("name ASC")
       ],
       [
-        Dan.where("active = true AND level = 12 AND release_date = ?", Date.new(2017,2,17)).order("name ASC")
+        Dan.where("active = true AND level = 12 AND release_date = ?", Date.new(2017,2,17)).order("name ASC"),
+        Dan.where("active = true AND level = 12 AND release_date = ?", Date.new(2017,4,27)).order("name ASC")
       ],
       [
         Dan.where("active = true AND level = 13 AND release_date = ?", Date.new(2016,12,28)).order("name ASC")
