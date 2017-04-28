@@ -28,6 +28,24 @@ class CommentsController < ApplicationController
  		end
  	end
 
+ 	def report
+ 		@comment = Comment.find(params[:comment][:id])
+ 		@user_vote = Vote.where("user_id = ? AND comment_id = ?", params[:comment][:user_id], params[:comment][:id]).first
+ 		if @user_vote.nil?
+ 			@user_vote = Vote.new
+ 			@user_vote.comment_id = @comment.id
+ 		end
+ 		@user_vote.reported = true
+ 		@user_vote.save
+ 		if @comment.report != -1
+ 			@comment.reports = @comment.votes.where("reported = true").count
+ 			@comment.save
+ 		end
+ 		respond_to do |format|
+ 			format.json {render :json => {:status => true, :comment => @comment}}
+ 		end
+ 	end
+ 	
 	def upvote
     	@comment = Comment.find(params[:comment][:id])
 		@user_vote = Vote.where("user_id = ? AND comment_id = ?", params[:comment][:user_id], params[:comment][:id]).first
@@ -37,23 +55,23 @@ class CommentsController < ApplicationController
 			@user_vote.user_id = params[:comment][:user_id]
 			@user_vote.upvote = true
 			@user_vote.save
-      respond_to do |format|
-        format.json {render :json => {:status => true, :votes => @comment.user_votes}}
-      end
+		    respond_to do |format|
+		      format.json {render :json => {:status => true, :votes => @comment.user_votes}}
+		    end
 		else
 			if @user_vote.upvote == false
 				@user_vote.downvote = false
 				@user_vote.upvote = true
 				@user_vote.save
-        respond_to do |format|
-          format.json {render :json => {:status => true, :votes => @comment.user_votes}}
-        end
+        		respond_to do |format|
+            		format.json {render :json => {:status => true, :votes => @comment.user_votes}}
+        		end
 			else
 				@user_vote.upvote = false
 				@user_vote.save
-        respond_to do |format|
-          format.json {render :json => {:status => false, :votes => @comment.user_votes}}
-        end
+        		respond_to do |format|
+          		format.json {render :json => {:status => false, :votes => @comment.user_votes}}
+        		end
 			end
 		end
 	end
