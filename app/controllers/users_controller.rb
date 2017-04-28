@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.where("role != ?", "admin").order("dan DESC").paginate(:page => params[:page], :per_page => 20)
-    @users_name = User.where("role != ?", "admin").order("display_name ASC").paginate(:page => params[:page], :per_page => 20)
+    @users = User.where("role != ?", "admin").order("dan DESC").paginate(:page => params[:page], :per_page => 10)
+    @users_name = User.where("role != ?", "admin").order("display_name ASC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /users/1
@@ -173,7 +173,7 @@ class UsersController < ApplicationController
     end
     @all_comments = Comment.all.order("created_at DESC")
     @unapproved_comments = Comment.where("approved = false").order("created_at DESC")
-    @reported_comments = Comment.where("report > 0").order("report DESC").order("created_at DESC")
+    @reported_comments = Comment.where("reports > 0").order("reports DESC").order("created_at DESC")
   end
 
   def activate
